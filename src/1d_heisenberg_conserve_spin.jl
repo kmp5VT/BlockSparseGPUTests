@@ -5,10 +5,18 @@ using Random
 Random.seed!(1234)
 
 function default_vals()
-  return false, 5, [10,20,100,100,200], [1E-11], [0.0]
+  return false, 5, [10, 20, 100, 100, 200], [1E-11], [0.0]
 end
 
-function compute_1d_heisenberg(N::Integer; conserve_qns=nothing, conserve_pns = false, nsweeps=nothing, maxdim=nothing, cutoff=nothing, noise=nothing)
+function compute_1d_heisenberg(
+  N::Integer;
+  conserve_qns=nothing,
+  conserve_pns=false,
+  nsweeps=nothing,
+  maxdim=nothing,
+  cutoff=nothing,
+  noise=nothing,
+)
   defaults = default_vals()
   conserve_qns = (isnothing(conserve_qns) ? defaults[1] : conserve_qns)
   nsweeps = (isnothing(nsweeps) ? defaults[2] : nsweeps)
@@ -30,6 +38,6 @@ function compute_1d_heisenberg(N::Integer; conserve_qns=nothing, conserve_pns = 
   psi0 = randomMPS(sites, state, maxdim[1])
 
   # Run the DMRG algorithm, returning energy and optimized MPS
-  energy, psi = dmrg(H, psi0; nsweeps, maxdim, cutoff)
+  energy, psi = dmrg(H, psi0; nsweeps, maxdim, cutoff,outputlevel=1)
   return (energy, psi, H)
 end
