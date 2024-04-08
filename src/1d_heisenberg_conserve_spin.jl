@@ -3,9 +3,6 @@ using ITensors.Strided
 using Random
 
 Random.seed!(1234)
-# BLAS.set_num_threads(1)
-# Strided.set_num_threads(1)
-# ITensors.enable_threaded_blocksparse()
 
 function default_vals()
   return false, 5, [10,20,100,100,200], [1E-11], [0.0]
@@ -30,7 +27,7 @@ function compute_1d_heisenberg(N::Integer; conserve_qns=nothing, conserve_pns = 
   H = MPO(os, sites)
 
   state = [isodd(n) ? "Up" : "Dn" for n in 1:N]
-  psi0 = randomMPS(sites, state, 10)
+  psi0 = randomMPS(sites, state, maxdim[1])
 
   # Run the DMRG algorithm, returning energy and optimized MPS
   energy, psi = dmrg(H, psi0; nsweeps, maxdim, cutoff)

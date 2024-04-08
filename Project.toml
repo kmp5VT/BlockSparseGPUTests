@@ -1,0 +1,6 @@
+name = "BlockSparseGPUTests"
+version = "0.0.1"
+[deps]
+NDTensors ="23ae76d9-e61a-49c4-8f12-3f1a16adf9cf"
+ITensors = "9136182c-28ba-11e9-034c-db9fb085ebd5"
+TimerOutputs = "a759f4b9-e2f1-59dc-863e-4aeb61b1ea8f"
