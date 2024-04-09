@@ -1,9 +1,10 @@
 using ITensors, NDTensors, TimerOutputs
+using ITensors.ITensorMPS
+using BenchmarkTools: @btime
 
 function representative_contract_timing(
-  ψ, H; N=nothing, nrepeat=10, twosite=nothing, LHS=nothing, time=true, verbose = false
+  ψ, H; N=nothing, nrepeat=10, twosite=nothing, LHS=nothing, time=true, verbose = false, timer = TimerOutput(), timer_string::String = "LHS with two-site"
 )
-  timer = TimerOutput()
   if isnothing(twosite)
     N = (isnothing(N) ? Int(length(ψ) / 2) : N)
     ## Given a psi grab the middle and middle plus one and contract
@@ -37,14 +38,10 @@ function representative_contract_timing(
     if verbose
         println("Forming the LHS tensor to contract with two-site tensor")
     end
-    #@timeit timer "Construct LHS" begin
-      LHS = dag(ψ'[1]) * H[1] * (ψ[1])
-      for i in 2:(N - 1)
-        @show i
-        temp = dag(ψ'[i]) * H[i] * (ψ[i])
-        LHS = LHS * temp
-      end
-    #end
+    LHS = dag(ψ'[1]) * H[1] * (ψ[1])
+    for i in 2:(N - 1)
+      LHS = ((LHS * dag(ψ'[i])) * H[i]) * (ψ[i])
+    end
   else
     if verbose
         println("Using the provided LHS tensor")
@@ -58,16 +55,17 @@ function representative_contract_timing(
     println("Starting the timer for contracting LHS with two-site tensor")
   end
 
-  P = nothing
-  if time
     ## benchtools maybe to force contraction
     for i in 1:nrepeat
-      @timeit timer "LHS with two-site" P = LHS * twosite
+      @timeit timer timer_string begin 
+        LHS * twosite 
+      end
     end
-    println("Timing for the contractions:\n$(timer)")
-  end
+    if verbose
+      println("Timing for the contractions:\n$(timer)")
+    end
 
-  return twosite, LHS, P
+  return twosite, LHS
 end
 
 function representative_svd_timing(

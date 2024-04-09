@@ -4,7 +4,7 @@ using Random
 
 Random.seed!(1234)
 
-function default_vals()
+function default_vals(::Model{<:OneDHeis})
   return false, 5, [10, 20, 100, 100, 200], [1E-11], [0.0]
 end
 
@@ -17,7 +17,8 @@ function compute_1d_heisenberg(
   cutoff=nothing,
   noise=nothing,
 )
-  defaults = default_vals()
+  defaults = default_vals(Model{OneDHeis}())
+  
   conserve_qns = (isnothing(conserve_qns) ? defaults[1] : conserve_qns)
   nsweeps = (isnothing(nsweeps) ? defaults[2] : nsweeps)
   maxdim = (isnothing(maxdim) ? defaults[3] : maxdim)
@@ -38,6 +39,6 @@ function compute_1d_heisenberg(
   psi0 = randomMPS(sites, state, maxdim[1])
 
   # Run the DMRG algorithm, returning energy and optimized MPS
-  energy, psi = dmrg(H, psi0; nsweeps, maxdim, cutoff,outputlevel=1)
+  energy, psi = dmrg(H, psi0; nsweeps, maxdim, cutoff,outputlevel=0)
   return (energy, psi, H)
 end
