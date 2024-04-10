@@ -103,8 +103,8 @@ function test_one_d_heisenberg(
     timer_string=timer_string_contract,
   )
 
-  println("Running SVD testing")
-
+  #println("Running SVD testing")
+  # representative_svd_timing(ψ, H; N=site,nrepeat=nrepeat_svd)
   #@show timer
   return LHS, twosite
 end
@@ -167,7 +167,8 @@ function test_two_d_hubbard( dev = NDTensors.cpu;
     timer_string=timer_string_contract,
   )
 
-  println("Running SVD testing")
+  ## TODO working on best way to write SVD testing
+  # println("Running SVD testing")
 
   #@show timer
   return LHS, twosite

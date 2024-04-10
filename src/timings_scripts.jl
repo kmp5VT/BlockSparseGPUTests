@@ -77,33 +77,76 @@ function representative_contract_timing(
 end
 
 function representative_svd_timing(
-  ψ, H; N=nothing, nrepeat=10, twosite=nothing, LHS=nothing
-)
-  timer = TimerOutput()
+  ψ, H; N=nothing, nrepeat=10, verbose=false, twosite=nothing, timer=TimerOutput(), timer_string = "eigsolve",
+  mindim = nothing, maxdim = nothing, cutoff = nothing,  ortho = nothing, which_decomp=nothing, eigen_perturbation=nothing,
+  svd_alg=nothing,use_absolute_cutoff = nothing, use_relative_cutoff=nothing, min_blockdim = nothing
+  )
+  N = (isnothing(N) ? Int(length(ψ) / 2) : N)
   if isnothing(twosite)
-    N = (isnothing(N) ? Int(length(ψ) / 2) : N)
     ## Given a psi grab the middle and middle plus one and contract
     if N == length(ψ)
       error("You cannot choose the last site to run test")
     end
 
+    if verbose
+      println("Orthogonalizing ψ to site $(N)")
+    end
     orthogonalize!(ψ, N)
-    println("Constructing the two-site tensor for site $(N) and $(N + 1)")
+    if verbose
+      println("Constructing the two-site tensor for site $(N) and $(N + 1)")
+    end
     twosite = ψ[N] * ψ[N + 1]
-    println("Dimensions of two-site tensor")
+    if verbose
+      println("Dimensions of two-site tensor")
+    end
   else
-    println("Using the provided two-site tensor")
+    if verbose
+      println("Using the provided two-site tensor")
+    end
   end
-  easyprint(twosite)
-  println()
+  if verbose
+    easyprint(twosite)
+    println()
+  end
 
-  println("Starting the timer for contracting LHS with two-site tensor")
+  ## benchtools maybe to force contraction
+  indssite = inds(ψ[N])
+  ITensors.factorize(twosite, indssite; 
+      mindim, maxdim, cutoff, ortho, which_decomp, eigen_perturbation,svd_alg,
+      tags=tags(linkind(ψ, N)), use_absolute_cutoff, use_relative_cutoff,
+    min_blockdim)
 
-  P = nothing
   for i in 1:nrepeat
-    @timeit timer "LHS with two-site" svd(twosite, (ind(twosite, 1), ind(twosite, 2)))
+    @timeit timer timer_string begin
+      ITensors.factorize(twosite, indssite; 
+      mindim, maxdim, cutoff, ortho, which_decomp, eigen_perturbation,svd_alg,
+      tags=tags(linkind(ψ, N)), use_absolute_cutoff, use_relative_cutoff,
+    min_blockdim)
+    end
+  end
+  if verbose
+    println("Timing for the contractions:\n$(timer)")
   end
 
-  println("Timing for the contractions:\n$(timer)")
-  return twosite, LHS, P
+  return nothing
 end
+
+# indsMb = inds(M[b])
+# b = site
+# M = MPS
+# all else nothing
+# L, R, spec = factorize(
+  #   phi,
+  #   indsMb;
+  #   mindim,
+  #   maxdim,
+  #   cutoff,
+  #   ortho,
+  #   which_decomp,
+  #   eigen_perturbation,
+  #   svd_alg,
+  #   tags=tags(linkind(M, b)),
+  #   use_absolute_cutoff,
+  #   use_relative_cutoff,
+  #   min_blockdim,
+  # )

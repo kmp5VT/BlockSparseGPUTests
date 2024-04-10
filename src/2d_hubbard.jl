@@ -63,6 +63,7 @@ function compute_2d_hubbard(
   return energy, psi, H
 end
 
+## TODO I haven't tested this
 function compute_2d_hubbard_conserve_momentum(
   Nx=nothing,
   Ny=nothing;
