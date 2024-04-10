@@ -129,8 +129,6 @@ function test_two_d_hubbard( dev = NDTensors.cpu;
   timer_string_contract="$(dev): LHS * 2-site",
   )
   ψ = H = nothing
-  site=1
-
   if isnothing(twosite) || isnothing(LHS)
     println("Constructing the MPS and MPO on CPU")
     ψ, H = construct_psi_h(
@@ -153,6 +151,7 @@ function test_two_d_hubbard( dev = NDTensors.cpu;
     println("Running contraction testing")
     twosite, LHS = representative_contract_timing(ψ, H; N=site, nrepeat=1)
   else
+    site=1
     println("Moving LHS and twosite to device using $(dev)")
     twosite, LHS = dev.((twosite, LHS))
     representative_contract_timing(ψ, H; N=site, nrepeat=1, twosite=twosite, LHS=LHS)
