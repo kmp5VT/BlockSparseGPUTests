@@ -15,12 +15,14 @@ function easyprint(t::ITensor)
 end
 
 function easyprint(i::Index)
-  dir = (if i.dir == 1
-    "Out"
-  elseif i.dir == -1
-    "In"
-  else
-    "Neither"
-  end)
+  dir = (
+    if i.dir == 1
+      "Out"
+    elseif i.dir == -1
+      "In"
+    else
+      "Neither"
+    end
+  )
   return println("(dim=$(dim(i))|id=$(id(i)%1000)|$(tags(i)))")
 end

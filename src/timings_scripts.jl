@@ -1,9 +1,17 @@
 using ITensors, NDTensors, TimerOutputs
 using ITensors.ITensorMPS
-using BenchmarkTools: @btime
+# using BenchmarkTools: @btime
 
 function representative_contract_timing(
-  ψ, H; N=nothing, nrepeat=10, twosite=nothing, LHS=nothing, time=true, verbose = false, timer = TimerOutput(), timer_string::String = "LHS with two-site"
+  ψ,
+  H;
+  N=nothing,
+  nrepeat=10,
+  twosite=nothing,
+  LHS=nothing,
+  verbose=false,
+  timer=TimerOutput(),
+  timer_string::String="LHS with two-site",
 )
   if isnothing(twosite)
     N = (isnothing(N) ? Int(length(ψ) / 2) : N)
@@ -13,19 +21,19 @@ function representative_contract_timing(
     end
 
     if verbose
-        println("Orthogonalizing ψ to site $(N)")
+      println("Orthogonalizing ψ to site $(N)")
     end
     orthogonalize!(ψ, N)
     if verbose
-        println("Constructing the two-site tensor for site $(N) and $(N + 1)")
+      println("Constructing the two-site tensor for site $(N) and $(N + 1)")
     end
     twosite = ψ[N] * ψ[N + 1]
     if verbose
-        println("Dimensions of two-site tensor")
+      println("Dimensions of two-site tensor")
     end
   else
     if verbose
-        println("Using the provided two-site tensor")
+      println("Using the provided two-site tensor")
     end
   end
   if verbose
@@ -36,7 +44,7 @@ function representative_contract_timing(
   ## contract to form LHS
   if isnothing(LHS)
     if verbose
-        println("Forming the LHS tensor to contract with two-site tensor")
+      println("Forming the LHS tensor to contract with two-site tensor")
     end
     LHS = dag(ψ'[1]) * H[1] * (ψ[1])
     for i in 2:(N - 1)
@@ -44,7 +52,7 @@ function representative_contract_timing(
     end
   else
     if verbose
-        println("Using the provided LHS tensor")
+      println("Using the provided LHS tensor")
     end
   end
 
@@ -55,15 +63,15 @@ function representative_contract_timing(
     println("Starting the timer for contracting LHS with two-site tensor")
   end
 
-    ## benchtools maybe to force contraction
-    for i in 1:nrepeat
-      @timeit timer timer_string begin 
-        LHS * twosite 
-      end
+  ## benchtools maybe to force contraction
+  for i in 1:nrepeat
+    @timeit timer timer_string begin
+      LHS * twosite
     end
-    if verbose
-      println("Timing for the contractions:\n$(timer)")
-    end
+  end
+  if verbose
+    println("Timing for the contractions:\n$(timer)")
+  end
 
   return twosite, LHS
 end
