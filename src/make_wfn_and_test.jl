@@ -109,14 +109,15 @@ function test_one_d_heisenberg(
   return LHS, twosite
 end
 
-function test_two_d_hubbard( dev = NDTensors.cpu;
+function test_two_d_hubbard(
+  dev=NDTensors.cpu;
   twosite=nothing,
   LHS=nothing,
   site=nothing,
   nrepeat_contract=10,
   print_sites=false,
-  Nx = nothing,
-  Ny = nothing,
+  Nx=nothing,
+  Ny=nothing,
   conserve_qns=nothing,
   U=nothing,
   t=nothing,
@@ -127,12 +128,19 @@ function test_two_d_hubbard( dev = NDTensors.cpu;
   yperiodic=nothing,
   timer=TimerOutput(),
   timer_string_contract="$(dev): LHS * 2-site",
-  )
+)
   ψ = H = nothing
   if isnothing(twosite) || isnothing(LHS)
     println("Constructing the MPS and MPO on CPU")
     ψ, H = construct_psi_h(
-      "two_d_hubbard"; Nx=Nx, Ny=Ny, conserve_qns=conserve_qns, nsweeps, cutoff, maxdim, noise
+      "two_d_hubbard";
+      Nx=Nx,
+      Ny=Ny,
+      conserve_qns=conserve_qns,
+      nsweeps,
+      cutoff,
+      maxdim,
+      noise,
     )
 
     if isnothing(site)
@@ -151,7 +159,7 @@ function test_two_d_hubbard( dev = NDTensors.cpu;
     println("Running contraction testing")
     twosite, LHS = representative_contract_timing(ψ, H; N=site, nrepeat=1)
   else
-    site=1
+    site = 1
     println("Moving LHS and twosite to device using $(dev)")
     twosite, LHS = dev.((twosite, LHS))
     representative_contract_timing(ψ, H; N=site, nrepeat=1, twosite=twosite, LHS=LHS)

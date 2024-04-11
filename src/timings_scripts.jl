@@ -77,10 +77,25 @@ function representative_contract_timing(
 end
 
 function representative_svd_timing(
-  ψ, H; N=nothing, nrepeat=10, verbose=false, twosite=nothing, timer=TimerOutput(), timer_string = "eigsolve",
-  mindim = nothing, maxdim = nothing, cutoff = nothing,  ortho = nothing, which_decomp=nothing, eigen_perturbation=nothing,
-  svd_alg=nothing,use_absolute_cutoff = nothing, use_relative_cutoff=nothing, min_blockdim = nothing
-  )
+  ψ,
+  H;
+  N=nothing,
+  nrepeat=10,
+  verbose=false,
+  twosite=nothing,
+  timer=TimerOutput(),
+  timer_string="eigsolve",
+  mindim=nothing,
+  maxdim=nothing,
+  cutoff=nothing,
+  ortho=nothing,
+  which_decomp=nothing,
+  eigen_perturbation=nothing,
+  svd_alg=nothing,
+  use_absolute_cutoff=nothing,
+  use_relative_cutoff=nothing,
+  min_blockdim=nothing,
+)
   N = (isnothing(N) ? Int(length(ψ) / 2) : N)
   if isnothing(twosite)
     ## Given a psi grab the middle and middle plus one and contract
@@ -111,17 +126,39 @@ function representative_svd_timing(
 
   ## benchtools maybe to force contraction
   indssite = inds(ψ[N])
-  ITensors.factorize(twosite, indssite; 
-      mindim, maxdim, cutoff, ortho, which_decomp, eigen_perturbation,svd_alg,
-      tags=tags(linkind(ψ, N)), use_absolute_cutoff, use_relative_cutoff,
-    min_blockdim)
+  ITensors.factorize(
+    twosite,
+    indssite;
+    mindim,
+    maxdim,
+    cutoff,
+    ortho,
+    which_decomp,
+    eigen_perturbation,
+    svd_alg,
+    tags=tags(linkind(ψ, N)),
+    use_absolute_cutoff,
+    use_relative_cutoff,
+    min_blockdim,
+  )
 
   for i in 1:nrepeat
     @timeit timer timer_string begin
-      ITensors.factorize(twosite, indssite; 
-      mindim, maxdim, cutoff, ortho, which_decomp, eigen_perturbation,svd_alg,
-      tags=tags(linkind(ψ, N)), use_absolute_cutoff, use_relative_cutoff,
-    min_blockdim)
+      ITensors.factorize(
+        twosite,
+        indssite;
+        mindim,
+        maxdim,
+        cutoff,
+        ortho,
+        which_decomp,
+        eigen_perturbation,
+        svd_alg,
+        tags=tags(linkind(ψ, N)),
+        use_absolute_cutoff,
+        use_relative_cutoff,
+        min_blockdim,
+      )
     end
   end
   if verbose
@@ -136,17 +173,17 @@ end
 # M = MPS
 # all else nothing
 # L, R, spec = factorize(
-  #   phi,
-  #   indsMb;
-  #   mindim,
-  #   maxdim,
-  #   cutoff,
-  #   ortho,
-  #   which_decomp,
-  #   eigen_perturbation,
-  #   svd_alg,
-  #   tags=tags(linkind(M, b)),
-  #   use_absolute_cutoff,
-  #   use_relative_cutoff,
-  #   min_blockdim,
-  # )
+#   phi,
+#   indsMb;
+#   mindim,
+#   maxdim,
+#   cutoff,
+#   ortho,
+#   which_decomp,
+#   eigen_perturbation,
+#   svd_alg,
+#   tags=tags(linkind(M, b)),
+#   use_absolute_cutoff,
+#   use_relative_cutoff,
+#   min_blockdim,
+# )
