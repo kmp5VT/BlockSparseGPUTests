@@ -14,10 +14,17 @@ A function to contruct and optimize a 1D Heisenberg chain of `N`
 sites (particles) using the DMRG optimization process provided by ITensors.
 For a description of the ITensor DMRG algorithm see the [ITensor documentation](https://itensor.github.io/ITensors.jl/stable/DMRG.html)
 
-Returns
+Returns:
   -'energy::Number' - The eigenvalues of the optimized MPS
   -'psi' - The optimized MPS
   -'H' - The Hamiltonian MPO
+
+Optional Keyword Arguments
+  -'N::Integer' - The number of MPS sites
+  -'conserve_qns::Bool' - Enable/disable Blocksparse algorithm by conserving quantum numbers
+  -'conserve_pns::Bool' - TODO make this usable
+  -'nsweeps' - Number of DMRG sweeps
+  -'maxdim' - The maximum 
 """
 function compute_1d_heisenberg(
   N::Integer;
