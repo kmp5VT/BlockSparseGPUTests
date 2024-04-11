@@ -34,7 +34,7 @@ the model, the number of sites, the bond dimensions, etc...
 There are two modes of testing are the contraction of the fully contracted LHS MPS/MPO chain with a contracted two-site tensor
 
 
-$$
+<!-- $$
 \sum_\chi \left( \langle \Psi_{1,...,j-1} | H_{1,...,j-1} | \Psi_{1,...,j-1} \rangle \right)^\chi _{\chi '}$$ 
 
 $$\left( |\Psi_{j}\rangle |\Psi_{j+1} \rangle) \right)^{a\chi}_{b\chi ''}
@@ -51,7 +51,7 @@ $$
 = (|\Psi_{j}\rangle)^{a\chi}_{P} (|\Psi_{j+1} \rangle)^{P}_{b\chi}
 $$
 
-where $a$ and $b$ are site indices.
+where $a$ and $b$ are site indices. -->
 TODO: Add pictoral diagrams to graphically show what the decompositions/contractions look like
 
 ## Documentation
