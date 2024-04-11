@@ -112,3 +112,4 @@ begin
     @show timer
     return nothing
 end
+print_timer(timer;sortby=:name, compact=false, allocations=false)
