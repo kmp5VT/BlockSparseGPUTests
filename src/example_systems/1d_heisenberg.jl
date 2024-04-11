@@ -2,12 +2,23 @@ using ITensors
 using ITensors.Strided
 using Random
 
-Random.seed!(1234)
-
+## default values for the 1d Heisenberg model
 function default_vals(::Model{<:OneDHeis})
   return false, 5, [10, 20, 100, 100, 200], [1E-11], [0.0]
 end
 
+"""
+  compute_1d_heisenberg(; N::Integer, kwargs...)
+
+A function to contruct and optimize a 1D Heisenberg chain of `N`
+sites (particles) using the DMRG optimization process provided by ITensors.
+For a description of the ITensor DMRG algorithm see the [ITensor documentation](https://itensor.github.io/ITensors.jl/stable/DMRG.html)
+
+Returns
+  -'energy::Number' - The eigenvalues of the optimized MPS
+  -'psi' - The optimized MPS
+  -'H' - The Hamiltonian MPO
+"""
 function compute_1d_heisenberg(
   N::Integer;
   conserve_qns=nothing,
