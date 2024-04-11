@@ -7,6 +7,37 @@ function default_vals(::Model{<:TwoDHubb})
 end
 
 ## conserve_particles
+"""
+```julia
+  compute_2d_hubbard(N::Integer; kwargs...)
+```
+
+A function to contruct and optimize a 1D Heisenberg chain of `N`
+sites (particles) using the DMRG optimization process provided by ITensors.
+For a description of the ITensor DMRG algorithm see the [ITensor documentation](https://itensor.github.io/ITensors.jl/stable/DMRG.html)
+
+Returns:
+
+  - 'energy::Number' - The eigenvalues of the optimized MPS
+  - 'psi' - The optimized MPS
+  - 'H' - The Hamiltonian MPO
+
+Required Arguments
+  
+  - 'Nx::Integer' - The number of MPS sites in the x dimension; default 6
+  - 'Ny::Integer' - The number of MPS sites in the y dimension; default 3
+
+Optional Keyword Arguments
+
+  - 'conserve_qns::Bool' - Enable/disable Blocksparse algorithm by conserving quantum numbers; false
+  - 'yperiodic' - Is the y dimension periodic; true
+  - 'U' - TODO ; 4.0
+  - 't' - TODO ; 1.0
+  - 'nsweeps' - Number of DMRG sweeps; 10
+  - 'maxdim' - The maximum size of the bond dimension for each DMRG sweeps, overrides cutoff; [100, 200, 400, 800, 1600] 
+  - 'cutoff' - The truncating parameter for the DMRG 2-site optimization; [1E-6]
+  - 'noise' - The amount of random noise added to the DMRG update step to prevent swamping behavior in difficult optimizations [1E-6, 1E-7, 1E-8, 0.0]
+"""
 function compute_2d_hubbard(
   Nx=nothing,
   Ny=nothing;

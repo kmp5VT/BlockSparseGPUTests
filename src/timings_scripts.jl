@@ -2,6 +2,40 @@ using ITensors, NDTensors, TimerOutputs
 using ITensors.ITensorMPS
 # using BenchmarkTools: @btime
 
+"""
+```julia
+  representative_contract_timing(ψ, H; kwargs...)
+```
+
+A function which takes an optimized wavefunction ψ and Hamiltonian and constructs a two-site tensor with sites `N` and `N+1`
+and forms the LHS of the DMRG problem using the `1` to `N-1` previous sites.
+Using the two-site tensor and the LHS performance timing is done on this DMRG representative contraction.
+If the optional arguments `LHS` and `twosite` are provided the code will skip the process of 
+constructing these objects and, therefore, ignore the argument `N`. 
+This choice has been made to make it easier to rerun timings with different options.
+At the moment this code uses the `TimerOutputs` package for benchmarking and users need to 
+pass a `timer` or mark `verbose=true` to inspect the output.
+
+Returns:
+
+  - twosite - The optimized MPS
+  - LHS - The eigenvalues of the optimized MPS
+  
+Required Arguments
+
+  - ψ - An optimized MPS
+  - H - An MPO Hamiltonian
+
+Optional Keyword Arguments
+
+  - 'N::Integer' - The site which will be used to construct the two-site tensor (N and N+1 are used) so please choose N ≤ length(ψ) - 1
+  - 'nrepeat::Integer' - The number of times the contraction code will be repeated for benchmarking purposes; 10
+  - 'twosite::ITensor' - The two-site tensor which is being contracted: nothing
+  - 'LHS' - The left hand side of the DMRG problem; nothing
+  - 'verbose::Bool' - Print information about what the code is doing; false
+  - 'timer::TimerOutput' - TimerOutput object which is used for benchmarking
+  - 'timer_string' - The description string for the timer; "LHS with two-site"
+"""
 function representative_contract_timing(
   ψ,
   H;
@@ -76,13 +110,46 @@ function representative_contract_timing(
   return twosite, LHS
 end
 
+"""
+```julia
+representative_svd_timing(ψ, H; kwargs...)
+```
+
+A function which takes an optimized wavefunction ψ and constructs a two-site tensor with sites `N` and `N+1`.
+Performance timing is then done on a DMRG representative decomposition using ITensors eigsolve code.
+If the optional argument `twosite` is provided the code will skip the process of 
+constructing `twosite` and, therefore, ignore the argument `N`. 
+This choice has been made to make it easier to rerun timings with different options.
+At the moment this code uses the `TimerOutputs` package for benchmarking and users need to 
+pass a `timer` or mark `verbose=true` to inspect the output.
+
+Returns:
+
+  - twosite - The optimized MPS
+  
+Required Arguments
+
+  - ψ - An optimized MPS
+
+Optional Keyword Arguments
+
+  - 'N::Integer' - The site which will be used to construct the two-site tensor (N and N+1 are used) so please choose N ≤ length(ψ) - 1
+  - 'nrepeat::Integer' - The number of times the contraction code will be repeated for benchmarking purposes; 10
+  - 'twosite::ITensor' - The two-site tensor which is being contracted: nothing
+  - 'verbose::Bool' - Print information about what the code is doing; false
+  - 'timer::TimerOutput' - TimerOutput object which is used for benchmarking
+  - 'timer_string::String' - The description string for the timer; "LHS with two-site"
+  - 'which_decomp::String' - choose what kind of decomposition is used. Options: eigen, qr, svd
+
+To see the full factorize source and Keywords see [ITensor's documentation](https://itensor.github.io/ITensors.jl/stable/ITensorType.html#LinearAlgebra.factorize-Tuple{ITensor,%20Vararg{Any}})
+"""
 function representative_svd_timing(
   ψ,
   H;
   N=nothing,
   nrepeat=10,
-  verbose=false,
   twosite=nothing,
+  verbose=false,
   timer=TimerOutput(),
   timer_string="eigsolve",
   mindim=nothing,
@@ -167,23 +234,3 @@ function representative_svd_timing(
 
   return nothing
 end
-
-# indsMb = inds(M[b])
-# b = site
-# M = MPS
-# all else nothing
-# L, R, spec = factorize(
-#   phi,
-#   indsMb;
-#   mindim,
-#   maxdim,
-#   cutoff,
-#   ortho,
-#   which_decomp,
-#   eigen_perturbation,
-#   svd_alg,
-#   tags=tags(linkind(M, b)),
-#   use_absolute_cutoff,
-#   use_relative_cutoff,
-#   min_blockdim,
-# )

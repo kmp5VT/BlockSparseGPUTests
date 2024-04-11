@@ -8,14 +8,14 @@ adapt32(ten::ITensor) = adapt(Float32, ten)
 begin
   timer = TimerOutput()
   @timeit timer "Dense" begin
-    LHS, twosite = BlockSparseGPUTests.test_one_d_heisenberg(;
+    LHS, twosite = BlockSparseGPUTests.test_1d_heisenberg(;
       N=100,
       conserve_qns=false,
       timer=timer,
       timer_string_contract="cpuF64: LHS * 2site",
       nrepeat_contract=1000,
     )
-    BlockSparseGPUTests.test_one_d_heisenberg(
+    BlockSparseGPUTests.test_1d_heisenberg(
       adapt32;
       twosite=twosite,
       LHS=LHS,
@@ -24,7 +24,7 @@ begin
       timer=timer,
       timer_string_contract="cpuF32: LHS * 2site",
     )
-    BlockSparseGPUTests.test_one_d_heisenberg(
+    BlockSparseGPUTests.test_1d_heisenberg(
       NDTensors.cu;
       twosite=twosite,
       LHS=LHS,
@@ -33,7 +33,7 @@ begin
       timer=timer,
       timer_string_contract="cuF64: LHS * 2site",
     )
-    BlockSparseGPUTests.test_one_d_heisenberg(
+    BlockSparseGPUTests.test_1d_heisenberg(
       cu;
       twosite=twosite,
       LHS=LHS,
@@ -50,14 +50,14 @@ begin
   end
 
   @timeit timer "BS" begin
-    LHS, twosite = BlockSparseGPUTests.test_one_d_heisenberg(;
+    LHS, twosite = BlockSparseGPUTests.test_1d_heisenberg(;
       N=100,
       conserve_qns=true,
       timer=timer,
       timer_string_contract="cpuF64: LHS * 2site",
       nrepeat_contract=1000,
     )
-    BlockSparseGPUTests.test_one_d_heisenberg(
+    BlockSparseGPUTests.test_1d_heisenberg(
       adapt32;
       twosite=twosite,
       nrepeat_contract=1000,
@@ -66,7 +66,7 @@ begin
       timer=timer,
       timer_string_contract="cpuF32: LHS * 2site",
     )
-    BlockSparseGPUTests.test_one_d_heisenberg(
+    BlockSparseGPUTests.test_1d_heisenberg(
       NDTensors.cu;
       twosite=twosite,
       nrepeat_contract=1000,
@@ -75,7 +75,7 @@ begin
       timer=timer,
       timer_string_contract="cuF64: LHS * 2site",
     )
-    BlockSparseGPUTests.test_one_d_heisenberg(
+    BlockSparseGPUTests.test_1d_heisenberg(
       cu;
       twosite=twosite,
       nrepeat_contract=1000,
@@ -98,14 +98,14 @@ end
 begin
   timer = TimerOutput()
   @timeit timer "Dense" begin
-    LHSD, twositeD = BlockSparseGPUTests.test_two_d_hubbard(;
+    LHSD, twositeD = BlockSparseGPUTests.test_2d_hubbard(;
       nrepeat_contract=1000,
       conserve_qns=false,
       timer=timer,
       timer_string_contract="CPUF64 LHS * 2site",
       nsweeps=6,
     )
-    BlockSparseGPUTests.test_two_d_hubbard(
+    BlockSparseGPUTests.test_2d_hubbard(
       adapt32;
       twosite=twositeD,
       LHS=LHSD,
@@ -115,7 +115,7 @@ begin
       timer_string_contract="CPUF32 LHS * 2site",
       nsweeps=1,
     )
-    BlockSparseGPUTests.test_two_d_hubbard(
+    BlockSparseGPUTests.test_2d_hubbard(
       NDTensors.cu;
       twosite=twositeD,
       LHS=LHSD,
@@ -125,7 +125,7 @@ begin
       timer_string_contract="CUF64 LHS * 2site",
       nsweeps=1,
     )
-    BlockSparseGPUTests.test_two_d_hubbard(
+    BlockSparseGPUTests.test_2d_hubbard(
       cu;
       twosite=twositeD,
       LHS=LHSD,
@@ -143,14 +143,14 @@ begin
   end
 
   @timeit timer "BS" begin
-    LHSS, twositeS = BlockSparseGPUTests.test_two_d_hubbard(;
+    LHSS, twositeS = BlockSparseGPUTests.test_2d_hubbard(;
       nrepeat_contract=1000,
       conserve_qns=true,
       timer=timer,
       timer_string_contract="CPUF64 LHS * 2site",
       nsweeps=6,
     )
-    BlockSparseGPUTests.test_two_d_hubbard(
+    BlockSparseGPUTests.test_2d_hubbard(
       adapt32;
       twosite=twositeS,
       LHS=LHSS,
@@ -160,7 +160,7 @@ begin
       timer_string_contract="CPUF32 LHS * 2site",
       nsweeps=1,
     )
-    BlockSparseGPUTests.test_two_d_hubbard(
+    BlockSparseGPUTests.test_2d_hubbard(
       NDTensors.cu;
       twosite=twositeS,
       LHS=LHSS,
@@ -170,7 +170,7 @@ begin
       timer_string_contract="CUF64 LHS * 2site",
       nsweeps=1,
     )
-    BlockSparseGPUTests.test_two_d_hubbard(
+    BlockSparseGPUTests.test_2d_hubbard(
       cu;
       twosite=twositeS,
       LHS=LHSS,

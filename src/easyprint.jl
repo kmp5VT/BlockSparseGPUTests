@@ -1,5 +1,14 @@
 using ITensors: ITensor, Index
-## another idea is to write 
+"""
+```julia
+easyprint(t::ITensor)
+easyprint(i::Index)
+```
+
+  A simplified print version for BlockSparse ITensors. Does not show data simply prints
+  The indices of each mode in the tensor and then prints each non-zero block and the dimension of
+  each mode in the block
+"""
 function easyprint(t::ITensor)
   println("dimensions of indices")
   for i in inds(t)
