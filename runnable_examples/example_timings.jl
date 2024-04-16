@@ -1,4 +1,4 @@
-include("../src/BlockSparseGPUTests.jl")
+include("$(@__DIR__)/../src/BlockSparseGPUTests.jl")
 using HDF5, ITensors, TimerOutputs
 using .BlockSparseGPUTests
 
@@ -11,12 +11,13 @@ function run_timings(foldername)
         T2 = read(fid, "T2", ITensor)
         close(fid)
 
+        ## TODO update and use benchmarktools here
         BlockSparseGPUTests.timing_contract(T1, T2; nrepeat=1000, timer=timer, timer_string="$(foldername)/$(filename)")
     end
 
     @show timer
 end
 
-run_timings("hdf5/dense_small")
-run_timings("hdf5/sparse_small")
+run_timings("$(@__DIR__)/hdf5/small/dense")
+run_timings("$(@__DIR__)/hdf5/small/sparse")
 
