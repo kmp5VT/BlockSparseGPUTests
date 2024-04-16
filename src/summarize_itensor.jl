@@ -2,9 +2,8 @@ using ITensors: ITensor, Index, QNBlocks
 using NDTensors: BlockSparseTensor, Tensor
 """
 ```julia
-easyprint(t::ITensor)
-easyprint(t::ITensor; printlevel::Int)
-easyprint(i::Index)
+summarize_itensor(t::ITensor)
+summarize_itensor(t::ITensor; printlevel::Int)
 ```
 
 Optional Argument:
@@ -15,23 +14,23 @@ Optional Argument:
   The indices of each mode in the tensor and then prints each non-zero block and the dimension of
   each mode in the block
 """
-function easyprint(t::ITensor; printlevel::Int=0)
+function summarize_itensor(t::ITensor; outputlevel::Int=0)
   r = order(t)
   println("Order-$(r) Tensor")
   for i in 1:r
-    print("Index $(i):\t")
-    easyprint(ind(t,i))
+    print("\tIndex $(i):    ")
+    summarize_index(ind(t,i))
   end
-  if printlevel == 1
+  if outputlevel >= 1
     printblocks(tensor(t))
   end
 end
 
-function easyprint(i::Index)
+function summarize_index(i::Index)
   return println("(dim=$(dim(i))|id=$(id(i)%1000)|tags=$(tags(i)))")
 end
 
-function easyprint(i::Index{<:QNBlocks})
+function summarize_index(i::Index{<:QNBlocks})
   dir = (
     if i.dir == 1
       "Out"
@@ -48,6 +47,6 @@ printblocks(t::Tensor) = println("All data in a single block with $(dim(t)) elem
 
 function printblocks(t::BlockSparseTensor)
   for i in nzblocks(t)
-    println("blockdim($(i)) = $(length(i))")
+    println("\t  length of block $(i) is $(length(i))")
   end
 end

@@ -33,7 +33,7 @@ Direction/goal of the library:
   2. The file `runnable_examples/time_contractions.jl` has easy to follow instructions on how to 
   grab the HDF5 tensor networks and time the contractions of the networks.
   3. There exists an examples on how to adapt the tensor networks for testing with different percisions and GPU backends.
-  4. The easyprint function can be used to extract easy to read and useful information about tensors, indices and index block sizes.
+  4. The `summarize_itensor` function can be used to extract easy to read and useful information about tensors, indices and index block sizes.
   5. In the future will create functions that allow users to pluck the representative out of a DMRG optimization at a specific sweep and 
   at a specific site.
 

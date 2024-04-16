@@ -1,9 +1,37 @@
 #using ITensors
 
-function default_vals(::Model{<:TwoDHubb})
-  return false,
-  true, 6, 3, 4.0, 1.0, 10, [100, 200, 400, 800, 1600], [1E-6],
-  [1E-6, 1E-7, 1E-8, 0.0]
+function default_vals(::Model{<:TwoDHubbSmall})
+  conserve_qns = false
+  yperiodic = true
+  Nx = 6
+  Ny = 1
+  N = Nx * Ny
+
+  U = 4.0
+  t = 1.0
+
+  nsweeps = 5
+  maxdim = [20, 50, 80, 100, 200]
+  cutoff = [1e-10]
+  noise = [1E-6, 1E-7, 1E-8, 0.0]
+  return conserve_qns, yperiodic, Nx, Ny, U, t, nsweeps, maxdim, cutoff, noise
+end
+
+function default_vals(::Model{<:TwoDHubbMed})
+  conserve_qns = false
+  yperiodic = true
+  Nx = 6
+  Ny = 1
+  N = Nx * Ny
+
+  U = 4.0
+  t = 1.0
+
+  nsweeps = 10
+  maxdim = [100, 200, 400, 800, 1600]
+  cutoff = [1e-10]
+  noise = [1E-6, 1E-7, 1E-8, 0.0]
+  return conserve_qns, yperiodic, Nx, Ny, U, t, nsweeps, maxdim, cutoff, noise
 end
 
 ## conserve_particles
@@ -49,8 +77,10 @@ function compute_2d_hubbard(
   maxdim=nothing,
   cutoff=nothing,
   noise=nothing,
+  model = nothing
 )
-  defaults = default_vals(Model{TwoDHubb}())
+  model = isnothing(model) ? Model{TwoDHubbSmall}() : model
+  defaults = default_vals(model)
   conserve_qns = (isnothing(conserve_qns) ? defaults[1] : conserve_qns)
   yperiodic = (isnothing(yperiodic) ? defaults[2] : yperiodic)
   Nx = (isnothing(Nx) ? defaults[3] : Nx)

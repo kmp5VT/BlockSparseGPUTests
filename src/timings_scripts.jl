@@ -11,12 +11,13 @@ Required Arguments
 
   - T1 - An optimized MPS
   - H - An MPO Hamiltonian
+  - 'nrepeat::Integer' - The number of times the contraction code will be repeated for benchmarking purposes; 10 
   - verbose::Bool - Print information about what the code is doing; false
   - timer::TimerOutput - TimerOutput object which is used for benchmarking
   - timer_string - The description string for the timer; "LHS with two-site"
 """
 function timing_contract(
-  T1::ITensor, T2::ITensor,
+  T1::ITensor, T2::ITensor;
   nrepeat = 10,
   verbose=false,
   timer=TimerOutput(),
@@ -57,10 +58,11 @@ Returns:
 Required Arguments
 
   - ψ - An optimized MPS
+  - TN - twosite tensor from site `N` and `N+1` which will be decomposed
+  - N - Site of `ψ` of the twosite tensor
 
 Optional Keyword Arguments
 
-  - 'N::Integer' - The site which will be used to construct the two-site tensor (N and N+1 are used) so please choose N ≤ length(ψ) - 1
   - 'nrepeat::Integer' - The number of times the contraction code will be repeated for benchmarking purposes; 10
   - 'twosite::ITensor' - The two-site tensor which is being contracted: nothing
   - 'verbose::Bool' - Print information about what the code is doing; false
@@ -72,7 +74,7 @@ To see the full factorize source and Keywords see [ITensor's documentation](http
 """
 function representative_svd_timing(
   ψ,
-  H,
+  TN,
   N;
   nrepeat=10,
   twosite=nothing,

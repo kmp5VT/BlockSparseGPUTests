@@ -35,7 +35,7 @@ Optional Keyword Arguments
   - 'yperiodic' -
 """
 function construct_psi_h(
-  model::String;
+  name::String;
   N=nothing,
   Nx=nothing,
   Ny=nothing,
@@ -47,9 +47,10 @@ function construct_psi_h(
   noise=nothing,
   U=nothing,
   t=nothing,
-  yperiodic=nothing
+  yperiodic=nothing,
+  model = nothing
 )
-  if model == "one_d_heisenberg"
+  if name == "one_d_heisenberg"
     (E, ψ, H) = compute_1d_heisenberg(
       N;
       conserve_qns=conserve_qns,
@@ -58,7 +59,7 @@ function construct_psi_h(
       cutoff=cutoff,
       noise=noise,
     )
-  elseif model == "two_d_hubbard"
+  elseif name == "two_d_hubbard"
     (E, ψ, H) = compute_2d_hubbard(
       Nx,
       Ny;
@@ -70,6 +71,7 @@ function construct_psi_h(
       cutoff=cutoff,
       noise=noise,
       yperiodic=yperiodic,
+      model = model
     )
   else
     error("$(model) is not a valid model name. Please refer to documentation.")
