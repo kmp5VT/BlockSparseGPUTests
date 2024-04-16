@@ -1,6 +1,6 @@
 using ITensors.ITensorMPS
-function left_environment_tensor(ψ, H; N = nothing)
-  N = isnothing(N) ? trunc(Int,length(ψ) / 2) : N
+function left_environment_tensor(ψ, H; N=nothing)
+  N = isnothing(N) ? trunc(Int, length(ψ) / 2) : N
   PH = ProjMPO(H)
   orthogonalize!(PH, ψ, N)
   ITensorMPS.makeL!(PH, ψ, N)
@@ -8,7 +8,7 @@ function left_environment_tensor(ψ, H; N = nothing)
   return PH.LR
 end
 
-function right_environment_tensor(ψ, H; N = nothing)
+function right_environment_tensor(ψ, H; N=nothing)
   N = isnothing(N) ? trunc(Int, length(ψ) / 2) : N
   PH = ProjMPO(H)
   orthogonalize!(PH, ψ, N)
@@ -17,7 +17,7 @@ function right_environment_tensor(ψ, H; N = nothing)
   return PH.LR
 end
 
-function two_site_tensor(ψ; N = nothing)
-   N = isnothing(N) ? trunc(Int, length(ψ) / 2) : N
-   return ψ[N] * ψ[N + 1] 
+function two_site_tensor(ψ; N=nothing)
+  N = isnothing(N) ? trunc(Int, length(ψ) / 2) : N
+  return ψ[N] * ψ[N + 1]
 end

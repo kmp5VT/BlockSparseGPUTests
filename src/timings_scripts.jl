@@ -17,8 +17,9 @@ Required Arguments
   - timer_string - The description string for the timer; "LHS with two-site"
 """
 function timing_contract(
-  T1::ITensor, T2::ITensor;
-  nrepeat = 10,
+  T1::ITensor,
+  T2::ITensor;
+  nrepeat=10,
   verbose=false,
   timer=TimerOutput(),
   timer_string::String="LHS with two-site",
@@ -35,7 +36,6 @@ function timing_contract(
   if verbose
     print_timer(timer; sortby=:name, compact=false, allocations=false)
   end
-
 end
 
 """

@@ -19,7 +19,7 @@ function summarize_itensor(t::ITensor; outputlevel::Int=0)
   println("Order-$(r) Tensor")
   for i in 1:r
     print("\tIndex $(i):    ")
-    summarize_index(ind(t,i))
+    summarize_index(ind(t, i))
   end
   if outputlevel >= 1
     printblocks(tensor(t))
@@ -43,7 +43,7 @@ function summarize_index(i::Index{<:QNBlocks})
   return println("(dim=$(dim(i))|id=$(id(i)%1000)|tags=$(tags(i))|dir=$(dir))")
 end
 
-printblocks(t::Tensor) = println("All data in a single block with $(dim(t)) elements" )
+printblocks(t::Tensor) = println("All data in a single block with $(dim(t)) elements")
 
 function printblocks(t::BlockSparseTensor)
   for i in nzblocks(t)

@@ -27,7 +27,6 @@ settings = Dict(
     #   "MPS Time Evolution" => "tutorials/MPSTimeEvolution.md",
     # ],
   ],
-  :format => Documenter.HTML(; prettyurls=false)
-  :doctest => true,
+  :format => Documenter.HTML(; prettyurls=false):doctest => true,
   :checkdocs => :none,
 )

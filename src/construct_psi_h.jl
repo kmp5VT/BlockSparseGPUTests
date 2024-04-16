@@ -48,7 +48,7 @@ function construct_psi_h(
   U=nothing,
   t=nothing,
   yperiodic=nothing,
-  model = nothing
+  model=nothing,
 )
   if name == "one_d_heisenberg"
     (E, ψ, H) = compute_1d_heisenberg(
@@ -71,7 +71,7 @@ function construct_psi_h(
       cutoff=cutoff,
       noise=noise,
       yperiodic=yperiodic,
-      model = model
+      model=model,
     )
   else
     error("$(model) is not a valid model name. Please refer to documentation.")
