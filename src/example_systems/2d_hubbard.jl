@@ -12,7 +12,7 @@ function default_vals(::Model{<:TwoDHubbSmall})
 
   nsweeps = 5
   maxdim = [20, 50, 80, 100, 200]
-  cutoff = [1e-10]
+  cutoff = [1e-11]
   noise = [1E-6, 1E-7, 1E-8, 0.0]
   return conserve_qns, yperiodic, Nx, Ny, U, t, nsweeps, maxdim, cutoff, noise
 end
@@ -21,13 +21,13 @@ function default_vals(::Model{<:TwoDHubbMed})
   conserve_qns = false
   yperiodic = true
   Nx = 6
-  Ny = 1
+  Ny = 3
   N = Nx * Ny
 
   U = 4.0
   t = 1.0
 
-  nsweeps = 10
+  nsweeps = 5
   maxdim = [100, 200, 400, 800, 1600]
   cutoff = [1e-10]
   noise = [1E-6, 1E-7, 1E-8, 0.0]
