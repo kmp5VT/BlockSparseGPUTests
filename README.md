@@ -89,17 +89,18 @@ julia> @time RHS_tensor * LHS_tensor
 There also exists a simple script for running all networks from a single folder in `runnable_examples/example_timings.jl`
 
 There is also a simple interface to inspect the information about a single tensor 
-``julia
-fid = h5open("runnable_examples/hdf5/small/sparse/S1.h5")
-T1 = read(fid, "T1", ITensor)
-close(fid)
-summarize_itensor(T1)
+
+```julia
+julia> fid = h5open("runnable_examples/hdf5/small/sparse/S1.h5")
+julia> T1 = read(fid, "T1", ITensor)
+julia> close(fid)
+julia> summarize_itensor(T1)
 Order-3 Tensor
         Index 1:    (dim=4|id=845|tags="Electron,Site,n=3"|dir=Neither)
         Index 2:    (dim=55|id=100|tags="Link,l=3"|dir=Neither)
         Index 3:    (dim=16|id=451|tags="Link,l=2"|dir=Neither)
 
-summarize_itensor(T1; outputlevel=1)
+julia> summarize_itensor(T1; outputlevel=1)
 Order-3 Tensor
         Index 1:    (dim=4|id=845|tags="Electron,Site,n=3"|dir=Neither)
         Index 2:    (dim=55|id=100|tags="Link,l=3"|dir=Neither)
