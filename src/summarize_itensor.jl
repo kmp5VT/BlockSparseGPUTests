@@ -1,18 +1,16 @@
 using ITensors: ITensor, Index, QNBlocks
 using NDTensors: BlockSparseTensor, Tensor
+
 """
-```julia
-summarize_itensor(t::ITensor)
-summarize_itensor(t::ITensor; printlevel::Int)
-```
+    summarize_itensor(t::ITensor)
+    summarize_itensor(t::ITensor; printlevel::Int)
 
-Optional Argument:
-
-  - 'printlevel::Int' - Option to increase the print level, level 0 shows indices level 1 shows block indices with block size; 0
+Optional argument:
+  - 'outputlevel::Int' - Option to increase the information level. Level 0 shows indices only. 
+    Level 1 also shows non-zero block locations and sizes.
   
-  A simplified print version for BlockSparse ITensors. Does not show data simply prints
-  The indices of each mode in the tensor and then prints each non-zero block and the dimension of
-  each mode in the block
+A simplified printing function for block sparse ITensors. Does not show data. Instead prints
+information about the tensor indices and the sizes and locations of the non-zero blocks.
 """
 function summarize_itensor(t::ITensor; outputlevel::Int=0)
   r = order(t)
