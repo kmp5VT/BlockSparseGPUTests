@@ -96,15 +96,36 @@ julia> T1 = read(fid, "T1", ITensor)
 julia> close(fid)
 julia> summarize_itensor(T1)
 Order-3 Tensor
-        Index 1:    (dim=4|id=845|tags="Electron,Site,n=3"|dir=Neither)
-        Index 2:    (dim=55|id=100|tags="Link,l=3"|dir=Neither)
-        Index 3:    (dim=16|id=451|tags="Link,l=2"|dir=Neither)
+        Index 1:
+                (dim=4|id=845|tags="Electron,Site,n=3"|dir=Neither)
+        Index 2:
+                (dim=55|id=100|tags="Link,l=3"|dir=Neither)
+        Index 3:
+                (dim=16|id=451|tags="Link,l=2"|dir=Neither)
 
 julia> summarize_itensor(T1; outputlevel=1)
 Order-3 Tensor
-        Index 1:    (dim=4|id=845|tags="Electron,Site,n=3"|dir=Neither)
-        Index 2:    (dim=55|id=100|tags="Link,l=3"|dir=Neither)
-        Index 3:    (dim=16|id=451|tags="Link,l=2"|dir=Neither)
+        Index 1:
+                (dim=4|id=845|tags="Electron,Site,n=3"|dir=Neither)
+                        blockdims:[1, 1, 1, 1]
+        Index 2:
+                (dim=55|id=100|tags="Link,l=3"|dir=Neither)
+                        blockdims:[1, 3, 2, 3, 7, 3, 1, 8, 7, 1, 3, 7, 3, 3, 2, 1]
+        Index 3:
+                (dim=16|id=451|tags="Link,l=2"|dir=Neither)
+                        blockdims:[1, 2, 2, 1, 4, 1, 2, 2, 1]
+
+julia> summarize_itensor(T1; outputlevel=2)
+Order-3 Tensor
+        Index 1:
+                (dim=4|id=845|tags="Electron,Site,n=3"|dir=Neither)
+                        blockdims:[1, 1, 1, 1]
+        Index 2:
+                (dim=55|id=100|tags="Link,l=3"|dir=Neither)
+                        blockdims:[1, 3, 2, 3, 7, 3, 1, 8, 7, 1, 3, 7, 3, 3, 2, 1]
+        Index 3:
+                (dim=16|id=451|tags="Link,l=2"|dir=Neither)
+                        blockdims:[1, 2, 2, 1, 4, 1, 2, 2, 1]
           length of block Block(4, 1, 1) is 3
           length of block Block(2, 2, 1) is 3
           ...
