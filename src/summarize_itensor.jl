@@ -40,7 +40,7 @@ function summarize_index(i::Index{<:QNBlocks}; outputlevel::Int=0)
   )
   blockdims = [blockdim(i,j) for j in 1:nblocks(i)]
   println("(dim=$(dim(i))|id=$(id(i)%1000)|tags=$(tags(i))|dir=$(dir))")
-  if outpulevel >= 1 
+  if outputlevel >= 1 
     println("\t\t\tblockdims:$(blockdims)")
   end
 end
