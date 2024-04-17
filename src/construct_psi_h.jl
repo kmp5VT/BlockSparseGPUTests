@@ -1,26 +1,23 @@
 using NDTensors
 using TimerOutputs: TimerOutput, @timeit
+
 ## Model is a string with option of 
 # one_d_heisenberg
 # two_d_hubbard
+
 """
-```julia
-construct_psi_h(model::String; kwargs...)
-```
+    construct_psi_h(model::String; kwargs...)
 
 A function to easily construct a wavefunction ψ and Hamiltonian given a model name.
 
 Returns:
-
   - 'psi' - The optimized MPS
   - 'H' - The Hamiltonian MPO
 
 Required Arguments
-  
   - model::String - name of available models; options "one_d_heisenberg", "two_d_hubbard"
   
 Optional Keyword Arguments
-
   - 'N::Integer' - The number of MPS sites (for 1d systems); 
   - 'Nx::Integer' - The number of sites in the x mode (for 2d systems);
   - 'Ny::Integer' - The number of sites in the y mode (for 2d systems);

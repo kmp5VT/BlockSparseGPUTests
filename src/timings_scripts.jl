@@ -3,12 +3,9 @@ using ITensors.ITensorMPS
 # using BenchmarkTools: @btime
 
 """
-```julia
-  timing_contract(ψ, H; kwargs...)
-```
+    timing_contract(ψ, H; kwargs...)
 
-Required Arguments
-
+Required Arguments:
   - T1 - An optimized MPS
   - H - An MPO Hamiltonian
   - 'nrepeat::Integer' - The number of times the contraction code will be repeated for benchmarking purposes; 10 
