@@ -36,6 +36,7 @@ Direction/goal of the library:
   4. The `summarize_itensor` function can be used to extract easy to read and useful information about tensors, indices and index block sizes.
   5. In the future will create functions that allow users to pluck the representative out of a DMRG optimization at a specific sweep and 
   at a specific site.
+  6. In the future, making an easy function to extract the block data from the ITensors and write them to a dense Array.
 
 
 <!-- So far there is the `one_d_heisenberg` model and the `two_d_hubbard` model with 
@@ -62,6 +63,52 @@ TODO: Add pictoral diagrams to graphically show what the decompositions/contract
 
 ## Documentation
 
+You can find the HDF5 tensor network files in `runnable_examples/hdf5/SIZE` where `SIZE= ["small", "medium", "large"]`. Each tensor network in these folders corresponds to a tensor diagram from the `notes/DMRG_contraction` PDF and are the filenames correspond to the labels in this document.  A single HDF5 file can be read in simply using 
+
+```julia
+julia> using HDF5, ITensors
+julia> fid = h5open("/path/to/tensor/network")
+julia> RHS_tensor = read(fid, "T1", ITensor)
+julia> LHS_tensor = read(fid, "T2", ITensor)
+julia> close(fid)
+```
+
+In all the files, the right hand side tensor from the tensor network diagram is stored as "T1" and the left hand side tensor from the tensor network diagram is stored as "T2".
+The tensor network contraction can simply be constructed using the `*` operation, i.e.
+
+```julia
+julia> output = RHS_tensor * LHS_tensor
+```
+
+and ones favorite benchmark tooling can be used to profile the tensors, for example
+
+```julia
+julia> @time RHS_tensor * LHS_tensor
+```
+
+There also exists a simple script for running all networks from a single folder in `runnable_examples/example_timings.jl`
+
+There is also a simple interface to inspect the information about a single tensor 
+``julia
+fid = h5open("runnable_examples/hdf5/small/sparse/S1.h5")
+T1 = read(fid, "T1", ITensor)
+close(fid)
+summarize_itensor(T1)
+Order-3 Tensor
+        Index 1:    (dim=4|id=845|tags="Electron,Site,n=3"|dir=Neither)
+        Index 2:    (dim=55|id=100|tags="Link,l=3"|dir=Neither)
+        Index 3:    (dim=16|id=451|tags="Link,l=2"|dir=Neither)
+
+summarize_itensor(T1; outputlevel=1)
+Order-3 Tensor
+        Index 1:    (dim=4|id=845|tags="Electron,Site,n=3"|dir=Neither)
+        Index 2:    (dim=55|id=100|tags="Link,l=3"|dir=Neither)
+        Index 3:    (dim=16|id=451|tags="Link,l=2"|dir=Neither)
+          length of block Block(4, 1, 1) is 3
+          length of block Block(2, 2, 1) is 3
+          ...
+```
 
 ## Full Example Codes
 
+It is also possible to run ones own models using 
