@@ -2,7 +2,7 @@ include("$(@__DIR__)/../src/BlockSparseGPUTests.jl")
 using HDF5, ITensors, TimerOutputs
 using .BlockSparseGPUTests
 
-function run_timings(prefix; size="small", type="dense", adaptor = identity)
+function run_timings(prefix; size="small", type="dense", adaptor=identity)
   timer = TimerOutput()
   foldername = "$prefix/$size/$type"
   tensor_networks = ["EL1", "EL2", "S1", "S2", "S3"]
@@ -14,7 +14,11 @@ function run_timings(prefix; size="small", type="dense", adaptor = identity)
 
     ## TODO update and use benchmarktools here
     BlockSparseGPUTests.timing_contract(
-      adaptor(T1), adaptor(T2); nrepeat=1000, timer=timer, timer_string="$size,$type,$filename"
+      adaptor(T1),
+      adaptor(T2);
+      nrepeat=1000,
+      timer=timer,
+      timer_string="$size,$type,$filename",
     )
   end
 

@@ -6,7 +6,7 @@ using Plots
 ## Converts a block index into a tuple of their block sizes
 ## eg (QN() => 2, QN() => 3) -> (2,3)
 function block_extents(ind::Index)
-  ntuple(i -> blockdim(ind,i), nblocks(ind))
+  return ntuple(i -> blockdim(ind, i), nblocks(ind))
 end
 
 ## So here I want to take a specific tensor and calculate
@@ -31,18 +31,28 @@ end
 ## Here I want to 3d histogram plot block sizes of i, j and k in a tensor contraction
 ## So given a set of indices for i, compute the block sizes of each
 function historgram_3d_contraction_blocks(indsI::Tuple, indsJ::Tuple, indsK::Tuple)
-
 end
 
 ##
-function histogram_tensor_block_size(A::ITensor; label::String, nonzero::Bool = false, color::Symbol)
+function histogram_tensor_block_size(
+  A::ITensor; label::String, nonzero::Bool=false, color::Symbol
+)
   ## convert tuple to vector for histogram
   if !nonzero
     AllBlockDimensions = (get_tensor_block_sizes(A))
-    histogram(AllBlockDimensions, label=label, normalize=:true, color=color, bins=100, fillalpha=0.35)
+    histogram(
+      AllBlockDimensions;
+      label=label,
+      normalize=:true,
+      color=color,
+      bins=100,
+      fillalpha=0.35,
+    )
   else
     NZBlockDimensions = ([blockdim(tensor(A), i) for i in nzblocks(A)])
-    histogram(NZBlockDimensions, label=label, normalize=:true, color=color, bins=100, fillalpha=0.35)
+    histogram(
+      NZBlockDimensions; label=label, normalize=:true, color=color, bins=100, fillalpha=0.35
+    )
   end
 end
 
@@ -56,23 +66,30 @@ function plot_block_sizes(prefix::String, size::String)
     T2 = read(fid, "T2", ITensor)
     close(fid)
 
-    t = histogram_tensor_block_size(T1; label = "$(filename) T1 All", color = :black, nonzero = false)
-    t = histogram!(title="T1 $(filename) $(size) all blocks")
+    t = histogram_tensor_block_size(
+      T1; label="$(filename) T1 All", color=:black, nonzero=false
+    )
+    t = histogram!(; title="T1 $(filename) $(size) all blocks")
     savefig("$(@__DIR__)/plots/$(size)/all_blocks/$(filename)_block_dimensions_T1.pdf")
 
-    t = histogram_tensor_block_size(T1; label = "$(filename) T1 NZ", color = :green, nonzero = true)
-    t = histogram!(title="T1 $(filename) $(size) nonzero blocks")
+    t = histogram_tensor_block_size(
+      T1; label="$(filename) T1 NZ", color=:green, nonzero=true
+    )
+    t = histogram!(; title="T1 $(filename) $(size) nonzero blocks")
     savefig("$(@__DIR__)/plots/$(size)/nonzero/$(filename)_block_dimensions_T1.pdf")
 
-    t = histogram_tensor_block_size(T2; label = "$(filename) T2 All", color = :black, nonzero = false)
-    t = histogram!(title="T2 $(filename) $(size) all blocks")
+    t = histogram_tensor_block_size(
+      T2; label="$(filename) T2 All", color=:black, nonzero=false
+    )
+    t = histogram!(; title="T2 $(filename) $(size) all blocks")
     savefig("$(@__DIR__)/plots/$(size)/all_blocks/$(filename)_block_dimensions_T2.pdf")
 
-    t = histogram_tensor_block_size(T2; label = "$(filename) T2 NZ", color = :green, nonzero = true)
-    t = histogram!(title="T2 $(filename) $(size) nonzero blocks")
+    t = histogram_tensor_block_size(
+      T2; label="$(filename) T2 NZ", color=:green, nonzero=true
+    )
+    t = histogram!(; title="T2 $(filename) $(size) nonzero blocks")
     savefig("$(@__DIR__)/plots/$(size)/nonzero/$(filename)_block_dimensions_T2.pdf")
   end
 end
 
 plot_block_sizes("$(@__DIR__)/hdf5", "medium")
-
