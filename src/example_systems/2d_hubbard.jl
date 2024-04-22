@@ -4,7 +4,7 @@ function default_vals(::Model{<:TwoDHubbSmall})
   conserve_qns = false
   yperiodic = true
   Nx = 6
-  Ny = 1
+  Ny = 2
   N = Nx * Ny
 
   U = 4.0
