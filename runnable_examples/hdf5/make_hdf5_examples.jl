@@ -36,7 +36,7 @@ function make_and_write_hdf5_tensor_networks(
   names = ["EL1", "EL2", "S1", "S2", "S3"]
 
   for i in 1:length(names)
-    TN = remove_data_from_ITensor.(TNs[i])
+    TN = TNs[i]
     h5open("$(foldername)/$(names[i]).h5", "w") do fid
       fid["T1"] = TN[1]
       fid["T2"] = TN[2]
