@@ -1,13 +1,12 @@
 include("$(@__DIR__)/../src/BlockSparseGPUTests.jl")
-using HDF5, ITensors, TimerOutputs
+using HDF5, ITensors, TimerOutputs, NDTensors
 using .BlockSparseGPUTests
 using Plots
 
 ## Converts a block index into a tuple of their block sizes
 ## eg (QN() => 2, QN() => 3) -> (2,3)
 function block_extents(ind::Index)
-  ispace = ind.space
-  ntuple(i -> dim(ispace[i]), length(ispace))
+  ntuple(i -> blockdim(ind,i), nblocks(ind))
 end
 
 ## So here I want to take a specific tensor and calculate
@@ -22,7 +21,7 @@ function get_tensor_block_sizes(A::ITensor)
   for i in 2:length(blockextents)
     be = blockextents[i]
     l = length(hold) * length(be)
-    hold_new = Tuple(reshape([i * j for i in hold, j in be], l))
+    hold_new = reshape([i * j for i in hold, j in be], l)
     hold = hold_new
   end
 
@@ -36,17 +35,18 @@ function historgram_3d_contraction_blocks(indsI::Tuple, indsJ::Tuple, indsK::Tup
 end
 
 ##
-function histogram_tensor_block_size(A::ITensor)
+function histogram_tensor_block_size(A::ITensor; label::String, nonzero::Bool = false, color::Symbol)
   ## convert tuple to vector for histogram
-  AllBlockDimensions = [i for i in get_tensor_block_sizes(A)]
-  histogram(AllBlockDimensions, label="All Block", color=:gray, bins=100)
-
-  NZBlockDimensions = [length(i) for i in nzblocks(A)]
-
-  histogram!(NZBlockDimensions, label="Nonzero Block", color=:green)
+  if !nonzero
+    AllBlockDimensions = (get_tensor_block_sizes(A))
+    histogram(AllBlockDimensions, label=label, normalize=:true, color=color, bins=100, fillalpha=0.35)
+  else
+    NZBlockDimensions = ([blockdim(tensor(A), i) for i in nzblocks(A)])
+    histogram(NZBlockDimensions, label=label, normalize=:true, color=color, bins=100, fillalpha=0.35)
+  end
 end
 
-function plot_block_sizes(prefix::String; title::String)
+function plot_block_sizes(prefix::String, size::String)
   timer = TimerOutput()
   foldername = "$prefix/$size/sparse"
   tensor_networks = ["EL1", "EL2", "S1", "S2", "S3"]
@@ -56,14 +56,23 @@ function plot_block_sizes(prefix::String; title::String)
     T2 = read(fid, "T2", ITensor)
     close(fid)
 
-    histogram_tensor_block_size(T1)
+    t = histogram_tensor_block_size(T1; label = "$(filename) T1 All", color = :black, nonzero = false)
+    t = histogram!(title="T1 $(filename) $(size) all blocks")
+    savefig("$(@__DIR__)/plots/$(size)/all_blocks/$(filename)_block_dimensions_T1.pdf")
+
+    t = histogram_tensor_block_size(T1; label = "$(filename) T1 NZ", color = :green, nonzero = true)
+    t = histogram!(title="T1 $(filename) $(size) nonzero blocks")
+    savefig("$(@__DIR__)/plots/$(size)/nonzero/$(filename)_block_dimensions_T1.pdf")
+
+    t = histogram_tensor_block_size(T2; label = "$(filename) T2 All", color = :black, nonzero = false)
+    t = histogram!(title="T2 $(filename) $(size) all blocks")
+    savefig("$(@__DIR__)/plots/$(size)/all_blocks/$(filename)_block_dimensions_T2.pdf")
+
+    t = histogram_tensor_block_size(T2; label = "$(filename) T2 NZ", color = :green, nonzero = true)
+    t = histogram!(title="T2 $(filename) $(size) nonzero blocks")
+    savefig("$(@__DIR__)/plots/$(size)/nonzero/$(filename)_block_dimensions_T2.pdf")
   end
 end
-fid = h5open("runnable_examples/hdf5/small/sparse/S1.h5")
-T1 = read(fid, "T1", ITensor)
-T2 = read(fid, "T2", ITensor)
-close(fid)
 
-v = histogram_tensor_block_size(T2)
-histogram!(title="Small T1")
+plot_block_sizes("$(@__DIR__)/hdf5", "medium")
 
