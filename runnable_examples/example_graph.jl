@@ -6,17 +6,10 @@ using Plots
 ## Converts a block index into a tuple of their block sizes
 ## eg (QN() => 2, QN() => 3) -> (2,3)
 function block_extents(ind::Index)
-  return ntuple(i -> blockdim(ind, i), nblocks(ind))
+  return ntuple(i -> dim(ind.space[i]), nblocks(ind))
 end
 
-## So here I want to take a specific tensor and calculate
-## the size of all blocks in the tensor. 
-function get_tensor_block_sizes(A::ITensor)
-  is = inds(A)
-  ## count the number of blocks in each index of A
-  blockextents = [block_extents(i) for i in is]
-
-  ## for each index of A compute the product of the size of each block
+function combine_blockextents(blockextents::Vector)
   hold = blockextents[1]
   for i in 2:length(blockextents)
     be = blockextents[i]
@@ -28,9 +21,48 @@ function get_tensor_block_sizes(A::ITensor)
   return hold
 end
 
+## So here I want to take a specific tensor and calculate
+## the size of all blocks in the tensor. 
+function get_tensor_block_sizes(A::ITensor)
+  is = inds(A)
+  ## count the number of blocks in each index of A
+  blockextents = [block_extents(i) for i in is]
+
+  ## for each index of A compute the product of the size of each block
+  return combine_blockextents(blockextents)
+end
+
 ## Here I want to 3d histogram plot block sizes of i, j and k in a tensor contraction
 ## So given a set of indices for i, compute the block sizes of each
-function historgram_3d_contraction_blocks(indsI::Tuple, indsJ::Tuple, indsK::Tuple)
+function historgram_operational_intensity(indsI, indsJ, indsK)
+  ext_ijk = collect.(combine_blockextents([block_extents(p) for p in q]) for q in (indsI, indsJ, indsK))
+
+  d = prod(length.(ext_ijk))
+  ei,ej,ek = Vector{Int}.(undef, (d,d,d))
+  op_int = Vector{Float64}(undef, d)
+  num = 1
+  for j in ext_ijk[2]
+    for i in ext_ijk[1]
+      for k in ext_ijk[3]
+        ei[num] = i
+        ej[num] = j
+        ek[num] = k
+
+        op_int[num] = 2.0 * i * j * k / (10^9)
+        num += 1
+      end
+    end
+  end
+
+  plot(op_int, xlabel="block number", ylabel="GEMM intensity (GFLOPS)")
+end
+
+function histogram_contract_inds(T1::ITensor, T2::ITensor)
+  j = commoninds(T1, T2)
+  i = noncommoninds(inds(T1), j)
+  k = noncommoninds(j, inds(T2))
+
+  historgram_operational_intensity(i,j,k)
 end
 
 ##
