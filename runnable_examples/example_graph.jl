@@ -32,9 +32,54 @@ function get_tensor_block_sizes(A::ITensor)
   return combine_blockextents(blockextents)
 end
 
+##
+function histogram_tensor_block_size(
+  A::ITensor; label::String, nonzero::Bool=false, color::Symbol
+)
+  ## convert tuple to vector for histogram
+  if !nonzero
+    AllBlockDimensions = log10.(get_tensor_block_sizes(A))
+    histogram(
+      AllBlockDimensions;
+      label=label,
+      color=color,
+      fillalpha=0.35,
+      xlabel="Log10 Number of elements in block",
+      ylabel="Number of instances of block"
+    )
+  else
+    NZBlockDimensions = log10.([blockdim(tensor(A), i) for i in nzblocks(A)])
+    histogram(
+      NZBlockDimensions; label=label, color=color,fillalpha=0.35,
+      xlabel="Log10 Number of elements in block",
+      ylabel="Number of instances of block"
+    )
+  end
+end
+
+
+begin 
+  for filename in ["EL1", "EL2", "S1", "S2", "S3"]
+    size = "small"
+    fid = h5open("$(@__DIR__)/hdf5/$(size)/sparse/$(filename).h5")
+    for j in ["T1", "T2"]
+      T = read(fid, j, ITensor)
+
+      histogram_tensor_block_size(T; label="$(j) All", color=:black, nonzero=false)
+      t = histogram!(; title="$(j) $(filename) $(size) all blocks")
+        savefig("$(@__DIR__)/plots/$(size)/all_blocks/$(filename)_all_block_dimensions_$(j).pdf")
+
+      t = histogram_tensor_block_size(T; label="$(j) NZ", color=:green, nonzero=true)
+      t = histogram!(; title="$(j) $(filename) $(size) nonzero blocks")
+        savefig("$(@__DIR__)/plots/$(size)/nonzero/$(filename)_nz_block_dimensions_$(j).pdf")
+    end
+    close(fid)
+  end
+end
+
 ## Here I want to 3d histogram plot block sizes of i, j and k in a tensor contraction
 ## So given a set of indices for i, compute the block sizes of each
-function historgram_operational_intensity(indsI, indsJ, indsK)
+function historgram_operational_intensity(indsI, indsJ, indsK, label::String)
   ext_ijk = collect.(combine_blockextents([block_extents(p) for p in q]) for q in (indsI, indsJ, indsK))
 
   d = prod(length.(ext_ijk))
@@ -48,80 +93,33 @@ function historgram_operational_intensity(indsI, indsJ, indsK)
         ej[num] = j
         ek[num] = k
 
-        op_int[num] = 2.0 * i * j * k / (10^9)
+        op_int[num] = 2.0 * i * j * k /1e9
         num += 1
       end
     end
   end
 
-  plot(op_int, xlabel="block number", ylabel="GEMM intensity (GFLOPS)")
+  op_int = log10.(op_int)
+  histogram(op_int, xlabel="GEMM intensity\nlog10(GFLOPS)", ylabel="number of instances", label="EL1", title="Block contraction cost",fillalpha=0.35)
+  # histogram!(op_int, label=label, fillalpha=0.35)
 end
 
-function histogram_contract_inds(T1::ITensor, T2::ITensor)
+function histogram_contract_inds(T1::ITensor, T2::ITensor, label::String)
   j = commoninds(T1, T2)
   i = noncommoninds(inds(T1), j)
   k = noncommoninds(j, inds(T2))
 
-  historgram_operational_intensity(i,j,k)
+  historgram_operational_intensity(i,j,k, label)
 end
 
-##
-function histogram_tensor_block_size(
-  A::ITensor; label::String, nonzero::Bool=false, color::Symbol
-)
-  ## convert tuple to vector for histogram
-  if !nonzero
-    AllBlockDimensions = (get_tensor_block_sizes(A))
-    histogram(
-      AllBlockDimensions;
-      label=label,
-      normalize=:true,
-      color=color,
-      bins=100,
-      fillalpha=0.35,
-    )
-  else
-    NZBlockDimensions = ([blockdim(tensor(A), i) for i in nzblocks(A)])
-    histogram(
-      NZBlockDimensions; label=label, normalize=:true, color=color, bins=100, fillalpha=0.35
-    )
-  end
-end
-
-function plot_block_sizes(prefix::String, size::String)
-  timer = TimerOutput()
-  foldername = "$prefix/$size/sparse"
-  tensor_networks = ["EL1", "EL2", "S1", "S2", "S3"]
-  for filename in tensor_networks
-    fid = h5open("$(foldername)/$(filename).h5")
+begin
+  #for i in ["EL2", "S1", "S2", "S3"]
+    fid = h5open("$(@__DIR__)/hdf5/medium/sparse/EL1.h5")
     T1 = read(fid, "T1", ITensor)
     T2 = read(fid, "T2", ITensor)
     close(fid)
 
-    t = histogram_tensor_block_size(
-      T1; label="$(filename) T1 All", color=:black, nonzero=false
-    )
-    t = histogram!(; title="T1 $(filename) $(size) all blocks")
-    savefig("$(@__DIR__)/plots/$(size)/all_blocks/$(filename)_block_dimensions_T1.pdf")
-
-    t = histogram_tensor_block_size(
-      T1; label="$(filename) T1 NZ", color=:green, nonzero=true
-    )
-    t = histogram!(; title="T1 $(filename) $(size) nonzero blocks")
-    savefig("$(@__DIR__)/plots/$(size)/nonzero/$(filename)_block_dimensions_T1.pdf")
-
-    t = histogram_tensor_block_size(
-      T2; label="$(filename) T2 All", color=:black, nonzero=false
-    )
-    t = histogram!(; title="T2 $(filename) $(size) all blocks")
-    savefig("$(@__DIR__)/plots/$(size)/all_blocks/$(filename)_block_dimensions_T2.pdf")
-
-    t = histogram_tensor_block_size(
-      T2; label="$(filename) T2 NZ", color=:green, nonzero=true
-    )
-    t = histogram!(; title="T2 $(filename) $(size) nonzero blocks")
-    savefig("$(@__DIR__)/plots/$(size)/nonzero/$(filename)_block_dimensions_T2.pdf")
-  end
+    t = histogram_contract_inds(T1, T2, "EL1")
+  #end
 end
-
-plot_block_sizes("$(@__DIR__)/hdf5", "medium")
+savefig("$(@__DIR__)/plots/op_int/EL1_block_op_int_hist.pdf")
