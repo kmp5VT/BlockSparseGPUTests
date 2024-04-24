@@ -100,7 +100,7 @@ function historgram_operational_intensity(indsI, indsJ, indsK, label::String)
   end
 
   op_int = log10.(op_int)
-  histogram(op_int, xlabel="GEMM intensity\nlog10(GFLOPS)", ylabel="number of instances", label="EL1", title="Block contraction cost",fillalpha=0.35)
+  histogram(op_int, xlabel="GEMM intensity\nlog10(GFLOPS)", ylabel="number of instances", label="", title="$(label) block contraction cost",fillalpha=0.35)
   # histogram!(op_int, label=label, fillalpha=0.35)
 end
 
@@ -113,13 +113,14 @@ function histogram_contract_inds(T1::ITensor, T2::ITensor, label::String)
 end
 
 begin
-  #for i in ["EL2", "S1", "S2", "S3"]
-    fid = h5open("$(@__DIR__)/hdf5/medium/sparse/EL1.h5")
+  size = "small"
+  for i in ["EL1", "EL2", "S1", "S2", "S3"]
+    fid = h5open("$(@__DIR__)/hdf5/$(size)/sparse/$(i).h5")
     T1 = read(fid, "T1", ITensor)
     T2 = read(fid, "T2", ITensor)
     close(fid)
 
-    t = histogram_contract_inds(T1, T2, "EL1")
-  #end
+    t = histogram_contract_inds(T1, T2, "El1")
+    savefig("$(@__DIR__)/plots/$(size)/op_int/$(i)_block_op_int_hist.pdf")
+  end
 end
-savefig("$(@__DIR__)/plots/op_int/EL1_block_op_int_hist.pdf")
