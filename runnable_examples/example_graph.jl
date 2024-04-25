@@ -9,6 +9,10 @@ function block_extents(ind::Index)
   return ntuple(i -> dim(ind.space[i]), nblocks(ind))
 end
 
+function block_extents(ind::Vector)
+  return [dim(i) for i in ind]
+end
+
 function combine_blockextents(blockextents::Vector)
   hold = blockextents[1]
   for i in 2:length(blockextents)
@@ -125,34 +129,23 @@ begin
   end
 end
 
+v = "long_medium"
+fid = h5open("$(@__DIR__)/hdf5/$(v)/sparse/psi.h5",)
+psi = read(fid, "psi", MPS)
+close(fid)
 begin
-  size = "small"
-  fid = h5open("$(@__DIR__)/hdf5/$(size)/sparse/psi.h5")
-  psi = read(fid, "psi", MPS)
   length(psi)
-  c = linkind(psi,2)
-  cdims = collect(block_extents(c))
-  t = plot(cdims, label = "site 4")
-  for i in [4,6,8,10]
+  i = 30
+  c = linkind(psi,i)
+  cdims = block_extents(sort(space(c);by=qn_int->qn_int.first))
+  #cdims = collect(block_extents(c))
+  t = plot(cdims, label = "site $(i)")
+  for i in [40, 50, 60, 70, 80, 90, 100]
     c = linkind(psi,i)
-    cdims = collect(block_extents(c))
+    cdims = block_extents(sort(space(c);by=qn_int->qn_int.first))
     t = plot!(cdims, label="site $(i)")
   end
 end
 t
-plot!(xlabel="Block index", ylabel="Block dimension", title="Block distribution for different bond indices")
-savefig("$(@__DIR__)/plots/small/bond_dim/small_bond_dims.pdf")
-
-c = linkind(psi,8)
-cdims = collect(block_extents(c))
-using Distributions
-f = fit(Distributions.Normal, cdims)
-
-m(x) = (1/√(2 * π * f.σ^2)) * exp(-1 * (x - f.μ)^2/(2 * f.σ^2))
-
-x = range(0, 1, length=43)
-y = @. m(x)
-
-m(20)
-f
-mean(cdims)
+plot!(xlabel="Block index", ylabel="Block dimension", title="Block distribution for different bond indices\n Nx=60 Ny=2")
+savefig("$(@__DIR__)/plots/long_medium/sorted/bond_dims_60_2_30by10.pdf")
