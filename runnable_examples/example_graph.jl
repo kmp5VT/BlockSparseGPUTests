@@ -83,15 +83,15 @@ function historgram_operational_intensity(indsI, indsJ, indsK, label::String)
   ext_ijk = collect.(combine_blockextents([block_extents(p) for p in q]) for q in (indsI, indsJ, indsK))
 
   d = prod(length.(ext_ijk))
-  ei,ej,ek = Vector{Int}.(undef, (d,d,d))
+  #ei,ej,ek = Vector{Int}.(undef, (d,d,d))
   op_int = Vector{Float64}(undef, d)
   num = 1
   for j in ext_ijk[2]
     for i in ext_ijk[1]
       for k in ext_ijk[3]
-        ei[num] = i
-        ej[num] = j
-        ek[num] = k
+        # ei[num] = i
+        # ej[num] = j
+        # ek[num] = k
 
         op_int[num] = 2.0 * i * j * k /1e9
         num += 1
@@ -124,3 +124,35 @@ begin
     savefig("$(@__DIR__)/plots/$(size)/op_int/$(i)_block_op_int_hist.pdf")
   end
 end
+
+begin
+  size = "small"
+  fid = h5open("$(@__DIR__)/hdf5/$(size)/sparse/psi.h5")
+  psi = read(fid, "psi", MPS)
+  length(psi)
+  c = linkind(psi,2)
+  cdims = collect(block_extents(c))
+  t = plot(cdims, label = "site 4")
+  for i in [4,6,8,10]
+    c = linkind(psi,i)
+    cdims = collect(block_extents(c))
+    t = plot!(cdims, label="site $(i)")
+  end
+end
+t
+plot!(xlabel="Block index", ylabel="Block dimension", title="Block distribution for different bond indices")
+savefig("$(@__DIR__)/plots/small/bond_dim/small_bond_dims.pdf")
+
+c = linkind(psi,8)
+cdims = collect(block_extents(c))
+using Distributions
+f = fit(Distributions.Normal, cdims)
+
+m(x) = (1/√(2 * π * f.σ^2)) * exp(-1 * (x - f.μ)^2/(2 * f.σ^2))
+
+x = range(0, 1, length=43)
+y = @. m(x)
+
+m(20)
+f
+mean(cdims)
