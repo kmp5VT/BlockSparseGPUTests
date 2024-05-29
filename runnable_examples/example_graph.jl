@@ -1,5 +1,5 @@
 include("$(@__DIR__)/../src/BlockSparseGPUTests.jl")
-using HDF5, ITensors, TimerOutputs, NDTensors
+using JLD2, ITensors, TimerOutputs, NDTensors
 using .BlockSparseGPUTests
 using Plots
 
@@ -63,12 +63,13 @@ end
 
 
 begin 
-  for filename in ["EL1", "EL2", "S1", "S2", "S3"]
-    size = "small"
+  for filename in ["EL1"]#, "EL2", "S1", "S2", "S3"]
+    size = "medium"
     fid = h5open("$(@__DIR__)/hdf5/$(size)/sparse/$(filename).h5")
     for j in ["T1", "T2"]
       T = read(fid, j, ITensor)
 
+      T = BlockSparseGPUTests.replace_ITensor_data_with_random(T)
       histogram_tensor_block_size(T; label="$(j) All", color=:black, nonzero=false)
       t = histogram!(; title="$(j) $(filename) $(size) all blocks")
         savefig("$(@__DIR__)/plots/$(size)/all_blocks/$(filename)_all_block_dimensions_$(j).pdf")
@@ -103,7 +104,7 @@ function historgram_operational_intensity(indsI, indsJ, indsK, label::String)
     end
   end
 
-  op_int = log10.(op_int)
+  # op_int = log10.(op_int)
   histogram(op_int, xlabel="GEMM intensity\nlog10(GFLOPS)", ylabel="number of instances", label="", title="$(label) block contraction cost",fillalpha=0.35)
   # histogram!(op_int, label=label, fillalpha=0.35)
 end
@@ -129,23 +130,34 @@ begin
   end
 end
 
-v = "long_medium"
-fid = h5open("$(@__DIR__)/hdf5/$(v)/sparse/psi.h5",)
-psi = read(fid, "psi", MPS)
-close(fid)
+
+### plotting bond dimensions of a single calculation
+psi = BlockSparseGPUTests.replace_ITensor_data_with_random.(psi)
+c = linkind(psi, i)
+cdims = cdims = block_extents(sort(space(c);by=qn_int->qn_int.first))
+t = plot(cdims, label = "site $(i)")
 begin
-  length(psi)
-  i = 30
-  c = linkind(psi,i)
-  cdims = block_extents(sort(space(c);by=qn_int->qn_int.first))
-  #cdims = collect(block_extents(c))
-  t = plot(cdims, label = "site $(i)")
-  for i in [40, 50, 60, 70, 80, 90, 100]
+  v = "long_medium"
+  t = nothing
+  for bd in [200, 400, 800, 1600]
+    psi = load("$(@__DIR__)/jld2/$(v)/sparse/scan_60_4/psi_bond_$(bd).jld", "psi")
+    length(psi)
+    i = length(psi) ÷ 2
     c = linkind(psi,i)
-    cdims = block_extents(sort(space(c);by=qn_int->qn_int.first))
-    t = plot!(cdims, label="site $(i)")
+    @show dim(c)
+    cdims = block_extents(sort(space(c);by=qn_int->qn_int.first)) / (bd)
+    #cdims = collect(block_extents(c))
+    if isnothing(t)
+      t = plot(cdims, label = "bond dimension $(bd)")
+    else
+      t = plot!(cdims, label = "bond dimension $(bd)")
+    end
   end
+  @show t
+  plot!(xlabel="Block index", ylabel="Block dimension", title="Block distribution for different bond indices\n Nx=60 Ny=2")
 end
-t
-plot!(xlabel="Block index", ylabel="Block dimension", title="Block distribution for different bond indices\n Nx=60 Ny=2")
-savefig("$(@__DIR__)/plots/long_medium/sorted/bond_dims_60_2_30by10.pdf")
+
+savefig("$(@__DIR__)/plots/long_medium/diff_bond_dims/nx_60_ny_2_biggest_bond_1980.pdf")
+
+
+construct_psi_h("two_d_hubbard_momentum"; conserve_qns=false, conserve_sz=true, conserve_nf=false, conserve_ky=false, model=BlockSparseGPUTests.Model{BlockSparseGPUTests.TwoDHubbMed}());

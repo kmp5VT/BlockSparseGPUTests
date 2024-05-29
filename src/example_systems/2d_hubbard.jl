@@ -1,4 +1,8 @@
-#using ITensors
+using ITensors
+using ITensorMPS
+
+include(joinpath(@__DIR__, "electronk.jl"))
+include(joinpath(@__DIR__, "hubbard.jl"))
 
 function default_vals(::Model{<:TwoDHubbSmall})
   conserve_qns = false
@@ -78,6 +82,7 @@ function compute_2d_hubbard(
   cutoff=nothing,
   noise=nothing,
   model=nothing,
+  dev = identity,
 )
   model = isnothing(model) ? Model{TwoDHubbSmall}() : model
   defaults = default_vals(model)
@@ -124,6 +129,10 @@ function compute_2d_hubbard(
   return energy, psi, H
 end
 
+# - `conserve_qns` (default: false): conserve total ``S^z``
+# - `conserve_sz` (default: conserve_qns): conserve total ``S^z``
+# - `conserve_szparity` (default: false): conserve total ``S^z`` modulo two
+# conserve_nfparity
 ## TODO I haven't tested this
 function compute_2d_hubbard_conserve_momentum(
   Nx=nothing,
@@ -136,9 +145,15 @@ function compute_2d_hubbard_conserve_momentum(
   maxdim=nothing,
   cutoff=nothing,
   noise=nothing,
-  conserve_ky=true,
+  conserve_ky=nothing,
+  conserve_sz=nothing,
+  conserve_nf=nothing,
+  conserve_nfparity = nothing,
+  model = nothing,
+  dev = nothing
 )
-  defaults = default_vals(Model{TwoDHubb}())
+  model = isnothing(model) ? Model{TwoDHubbSmall}() : model
+  defaults = default_vals(model)
   conserve_qns = (isnothing(conserve_qns) ? defaults[1] : conserve_qns)
   yperiodic = (isnothing(yperiodic) ? defaults[2] : yperiodic)
   Nx = (isnothing(Nx) ? defaults[3] : Nx)
@@ -152,16 +167,26 @@ function compute_2d_hubbard_conserve_momentum(
   maxdim = isnothing(maxdim) ? defaults[8] : maxdim
   cutoff = isnothing(cutoff) ? defaults[9] : cutoff
   noise = isnothing(noise) ? defaults[10] : noise
+  conserve_ky = isnothing(conserve_ky) ? true : conserve_ky
+  conserve_sz = isnothing(conserve_sz) ? false : conserve_sz
+  conserve_nf = isnothing(conserve_nf) ? false : conserve_nf
+  conserve_nfparity = isnothing(conserve_nfparity) ? false : conserve_nfparity
+  @show conserve_ky
+  @show conserve_sz
+  @show conserve_nf
+  @show conserve_nfparity
+  @show dev
 
-  sites = siteinds("ElecK", N; conserve_qns=conserve_qns, conserve_ky, modulus_ky=Ny)
+  sites = siteinds("ElecK", N; conserve_sz = conserve_sz, conserve_nf = conserve_nf, conserve_ky, modulus_ky=Ny,
+  conserve_nfparity=conserve_nfparity)
 
   os = hubbard(; Nx, Ny, t, U, ky=true)
   H = MPO(os, sites)
 
   # Number of structural nonzero elements in a bulk
   # Hamiltonian MPO tensor
-  @show nnz(H[end ÷ 2])
-  @show nnzblocks(H[end ÷ 2])
+  # @show nnz(H[end ÷ 2])
+  # @show nnzblocks(H[end ÷ 2])
 
   # Create starting state with checkerboard
   # pattern
@@ -169,7 +194,18 @@ function compute_2d_hubbard_conserve_momentum(
     return iseven(I[1]) ⊻ iseven(I[2]) ? "↓" : "↑"
   end
 
+  seed = 1234
+  itensor_rng = Xoshiro()
+  Random.seed!(itensor_rng, seed)
   psi0 = randomMPS(itensor_rng, sites, state; linkdims=2)
-  energy, psi = dmrg(H, psi0; nsweeps, maxdim, cutoff, noise)
+  energy, psi = dmrg(dev(H), dev(psi0); nsweeps, maxdim, cutoff, noise)
   return (energy, psi, H)
 end
+
+
+## TODO 
+## First I need to run the computations with different symmetries to get a distribution for each kind.
+## Using the conserve 
+## Using hubbard ky and regular hubbard for that. 
+## Make plot of different block sizes of center with different bond dimensions.
+## Also a timing plot for the systems with different symmetries

@@ -1,4 +1,5 @@
 using ITensors
+using ITensorMPS
 using ITensors.Strided
 using Random
 
@@ -45,6 +46,7 @@ function compute_1d_heisenberg(
   maxdim=nothing,
   cutoff=nothing,
   noise=nothing,
+  dev=nothing,
 )
   defaults = default_vals(Model{OneDHeis}())
 

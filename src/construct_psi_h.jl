@@ -45,6 +45,11 @@ function construct_psi_h(
   U=nothing,
   t=nothing,
   yperiodic=nothing,
+  conserve_ky=nothing,
+  conserve_sz=nothing,
+  conserve_nf=nothing,
+  conserve_nfparity=nothing,
+  dev=NDTensors.cpu,
   model=nothing,
 )
   if name == "one_d_heisenberg"
@@ -55,6 +60,7 @@ function construct_psi_h(
       maxdim=maxdim,
       cutoff=cutoff,
       noise=noise,
+      dev=dev,
     )
   elseif name == "two_d_hubbard"
     (E, ψ, H) = compute_2d_hubbard(
@@ -68,7 +74,27 @@ function construct_psi_h(
       cutoff=cutoff,
       noise=noise,
       yperiodic=yperiodic,
+      dev=dev,
       model=model,
+    )
+  elseif name == "two_d_hubbard_momentum"
+    (E, ψ, H) = compute_2d_hubbard_conserve_momentum(
+      Nx,
+      Ny;
+      conserve_qns=conserve_qns,
+      yperiodic=yperiodic,
+      U=U,
+      t=t,
+      nsweeps=nsweeps,
+      maxdim=maxdim,
+      cutoff=cutoff,
+      noise=noise,
+      conserve_ky=conserve_ky,
+      conserve_sz=conserve_sz,
+      conserve_nf=conserve_nf,
+      conserve_nfparity=conserve_nfparity,
+      dev=dev,
+      model = model
     )
   else
     error("$(model) is not a valid model name. Please refer to documentation.")
