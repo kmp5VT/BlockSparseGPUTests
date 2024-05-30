@@ -1,4 +1,5 @@
-using ITensors.ITensorMPS
+using ITensors
+using ITensorMPS: ITensorMPS
 
 function left_environment_tensor(ψ, H; j=length(ψ) ÷ 2)
   PH = ProjMPO(H)
