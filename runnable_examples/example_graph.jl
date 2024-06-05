@@ -159,5 +159,40 @@ end
 
 savefig("$(@__DIR__)/plots/long_medium/diff_bond_dims/nx_60_ny_2_biggest_bond_1980.pdf")
 
+## All symmetries
+p_symm_all, H = construct_psi_h("two_d_hubbard_momentum"; conserve_nfparity=true, conserve_sz=true, conserve_nf=true, conserve_ky=true, model=BlockSparseGPUTests.Model{BlockSparseGPUTests.TwoDHubbMed}());
 
-construct_psi_h("two_d_hubbard_momentum"; conserve_qns=false, conserve_sz=true, conserve_nf=false, conserve_ky=false, model=BlockSparseGPUTests.Model{BlockSparseGPUTests.TwoDHubbMed}());
+
+p_symm_noparity, H = construct_psi_h("two_d_hubbard_momentum"; conserve_nfparity=false, conserve_sz=true, conserve_nf=true, conserve_ky=true, model=BlockSparseGPUTests.Model{BlockSparseGPUTests.TwoDHubbMed}());
+
+p_symm_noky, H = construct_psi_h("two_d_hubbard_momentum"; conserve_nfparity=true, conserve_sz=true, conserve_nf=true, conserve_ky=false, model=BlockSparseGPUTests.Model{BlockSparseGPUTests.TwoDHubbMed}());
+
+p_symm_nokysz, H = construct_psi_h("two_d_hubbard_momentum"; conserve_nfparity=true, conserve_sz=false, conserve_nf=true, conserve_ky=false, model=BlockSparseGPUTests.Model{BlockSparseGPUTests.TwoDHubbMed}());
+
+p_symm_nokynf, H = construct_psi_h("two_d_hubbard_momentum"; conserve_nfparity=true, conserve_sz=true, conserve_nf=false, conserve_ky=false, model=BlockSparseGPUTests.Model{BlockSparseGPUTests.TwoDHubbMed}());
+
+p_symm_nokysznf, H = construct_psi_h("two_d_hubbard_momentum"; conserve_nfparity=true, conserve_sz=false, conserve_nf=false, conserve_ky=false, model=BlockSparseGPUTests.Model{BlockSparseGPUTests.TwoDHubbMed}());
+
+wfns = [p_symm_all, p_symm_noky, p_symm_nokysz,p_symm_nokysznf];
+labels = ["Sz + Nf + Ky", "Sz + Nf", "Nf", "Nfparity"];
+markers = [:cross,:star, :circle,:diamond]
+t = plot()
+for x in 1:4
+## find only the Sz blocks
+c = linkind(wfns[x], 9)
+s = space(c);
+get_spin(i) = abs(ITensors.val(i.first, "Sz")) == 0
+#sz = block_extents(filter(get_spin, s))
+sz = sort(block_extents(s); rev = true)
+@show sz
+t = plot!(sz, label = labels[x], markershape=markers[x])
+end
+#c = linkind(p_symm_nokynf, 9)
+#s = space(c);
+# get_spin(i) = abs(ITensors.val(i.first, "Sz")) == 0
+# sz = block_extents(filter(get_spin, s))
+# plot!(block_extents(s), label = "No ky and nf symmetries. All values of Sz")
+# plot!(xlabel="Block index", ylabel="Block dimension", title="Block distribution for different symmetries\n Sz = 0 and χ = 1600")
+plot!(xlabel="Sorted block index", ylabel="Block dimension", title="Sorted block distribution for different symmetries\n χ = 1600")
+plot!(xscale=:log10)
+savefig("$(@__DIR__)/plots/medium/bond_dim/2d_momentum_1600.pdf")
