@@ -1,5 +1,4 @@
 using NDTensors
-using TimerOutputs: TimerOutput, @timeit
 
 ## Model is a string with option of 
 # one_d_heisenberg
