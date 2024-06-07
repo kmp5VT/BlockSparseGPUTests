@@ -37,77 +37,39 @@ function get_model(model_size::String)
   return model
 end
 
-function make_and_write_tensor_networks(
-  foldername; blocksparse=false, model_size::String="small", site=nothing
-)
-  for i in [8]
-    ψ, h = construct_psi_h(
-      "two_d_hubbard"; conserve_qns=blocksparse, model=get_model(model_size), nsweeps=i
-    )
-
-    psi = BlockSparseGPUTests.remove_data_from_ITensor.(ψ)
-    H = BlockSparseGPUTests.remove_data_from_ITensor.(h)
-
-    jldsave("$(foldername)/psi_sweep_$(i).jld"; psi)
-    # jldsave("$(foldername)/H.jld"; H)
-  end
-
-  # site = isnothing(site) ? div(length(ψ), 2) : site
-  # TNs = make_all_tensor_networks(ψ, h, site)
-  # names = ["E1", "E2", "S1", "S2", "S3"]
-
-  # for i in 1:length(names)
-  #   TN = TNs[i]
-  #   TN = BlockSparseGPUTests.remove_data_from_ITensor.(TN)
-  #   jldopen("$(foldername)/$(names[i]).jld", "w") do fid
-  #     fid["T1"] = TN[1]
-  #     fid["T2"] = TN[2]
-  #   end
-  # end
-
-  return nothing
-end
-
-make_and_write_tensor_networks(
-  "$(@__DIR__)/long_medium/sparse/scan_60_4"; blocksparse=true, model_size="long_medium"
-)
-
 function make_and_write_2d_momentum_hubbard(
   foldername;
   conserve_ky::Bool=false,
   conserve_sz::Bool=false,
   conserve_nf::Bool=false,
   conserve_nfparity::Bool=false,
-  model_size::String="small",
+  model_size::String="medium",
   site=nothing,
   write_only_psi::Bool=false,
 )
-  for i in [5]
-    ψ, h = construct_psi_h(
-      "two_d_hubbard";
-      conserve_ky,
-      conserve_sz,
-      conserve_nf,
-      conserve_nfparity,
-      model=get_model(model_size),
-      nsweeps=i,
-    )
+  ψ, h = construct_psi_h(
+    "two_d_hubbard";
+    conserve_ky,
+    conserve_sz,
+    conserve_nf,
+    conserve_nfparity,
+    model=get_model(model_size),
+  )
 
-    if write_only_psi
-      psi = BlockSparseGPUTests.remove_data_from_ITensor.(ψ)
-      jldsave("$(foldername)/psi_sweep_$(i).jld"; psi)
-    else
-      site = isnothing(site) ? div(length(ψ), 2) : site
-      TNs = make_all_tensor_networks(ψ, h, site)
-      names = ["E1", "E2", "S1", "S2", "S3"]
+  if write_only_psi
+    psi = BlockSparseGPUTests.remove_data_from_ITensor.(ψ)
+    jldsave("$(foldername)/psi.jld"; psi)
+  else
+    site = isnothing(site) ? div(length(ψ), 2) : site
+    TNs = make_all_tensor_networks(ψ, h, site)
+    names = ["E1", "E2", "S1", "S2", "S3"]
 
-      for i in 1:length(names)
-        TN = TNs[i]
-        TN = BlockSparseGPUTests.remove_data_from_ITensor.(TN)
-        jldopen("$(foldername)/$(names[i]).jld", "w") do fid
-          fid["T1"] = TN[1]
-          fid["T2"] = TN[2]
-        end
+    for i in 1:length(names)
+      TN = TNs[i]
+      TN = BlockSparseGPUTests.remove_data_from_ITensor.(TN)
+      jldopen("$(foldername)/$(names[i]).jld", "w") do fid
+        fid["T1"] = TN[1]
+        fid["T2"] = TN[2]
       end
     end
   end
@@ -115,16 +77,14 @@ function make_and_write_2d_momentum_hubbard(
   return nothing
 end
 
+conserve_ky = false
+conserve_sz = false
+conserve_nf = false
+conserve_nfparity = false
 make_and_write_2d_momentum_hubbard(
-  "$(@__DIR__)/2d_momentum_hubbard/medium/dense"; model_size="medium"
-)
-
-ψ, h = construct_psi_h(
-  "two_d_hubbard";
+  "$(@__DIR__)/2d_momentum_hubbard/medium/dense"; 
   conserve_ky,
   conserve_sz,
   conserve_nf,
-  conserve_nfparity,
-  model=get_model(model_size),
-  nsweeps=i,
+  conserve_nfparity
 )
