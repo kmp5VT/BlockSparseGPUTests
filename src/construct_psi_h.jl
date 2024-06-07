@@ -93,7 +93,7 @@ function construct_psi_h(
       conserve_nf=conserve_nf,
       conserve_nfparity=conserve_nfparity,
       dev=dev,
-      model = model
+      model=model,
     )
   else
     error("$(model) is not a valid model name. Please refer to documentation.")

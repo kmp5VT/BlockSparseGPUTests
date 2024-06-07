@@ -49,20 +49,22 @@ function histogram_tensor_block_size(
       color=color,
       fillalpha=0.35,
       xlabel="Log10 Number of elements in block",
-      ylabel="Number of instances of block"
+      ylabel="Number of instances of block",
     )
   else
     NZBlockDimensions = log10.([blockdim(tensor(A), i) for i in nzblocks(A)])
     histogram(
-      NZBlockDimensions; label=label, color=color,fillalpha=0.35,
+      NZBlockDimensions;
+      label=label,
+      color=color,
+      fillalpha=0.35,
       xlabel="Log10 Number of elements in block",
-      ylabel="Number of instances of block"
+      ylabel="Number of instances of block",
     )
   end
 end
 
-
-begin 
+begin
   for filename in ["EL1"]#, "EL2", "S1", "S2", "S3"]
     size = "medium"
     fid = h5open("$(@__DIR__)/hdf5/$(size)/sparse/$(filename).h5")
@@ -72,11 +74,13 @@ begin
       T = BlockSparseGPUTests.replace_ITensor_data_with_random(T)
       histogram_tensor_block_size(T; label="$(j) All", color=:black, nonzero=false)
       t = histogram!(; title="$(j) $(filename) $(size) all blocks")
-        savefig("$(@__DIR__)/plots/$(size)/all_blocks/$(filename)_all_block_dimensions_$(j).pdf")
+      savefig(
+        "$(@__DIR__)/plots/$(size)/all_blocks/$(filename)_all_block_dimensions_$(j).pdf"
+      )
 
       t = histogram_tensor_block_size(T; label="$(j) NZ", color=:green, nonzero=true)
       t = histogram!(; title="$(j) $(filename) $(size) nonzero blocks")
-        savefig("$(@__DIR__)/plots/$(size)/nonzero/$(filename)_nz_block_dimensions_$(j).pdf")
+      savefig("$(@__DIR__)/plots/$(size)/nonzero/$(filename)_nz_block_dimensions_$(j).pdf")
     end
     close(fid)
   end
@@ -85,7 +89,10 @@ end
 ## Here I want to 3d histogram plot block sizes of i, j and k in a tensor contraction
 ## So given a set of indices for i, compute the block sizes of each
 function historgram_operational_intensity(indsI, indsJ, indsK, label::String)
-  ext_ijk = collect.(combine_blockextents([block_extents(p) for p in q]) for q in (indsI, indsJ, indsK))
+  ext_ijk =
+    collect.(
+      combine_blockextents([block_extents(p) for p in q]) for q in (indsI, indsJ, indsK)
+    )
 
   d = prod(length.(ext_ijk))
   #ei,ej,ek = Vector{Int}.(undef, (d,d,d))
@@ -98,14 +105,21 @@ function historgram_operational_intensity(indsI, indsJ, indsK, label::String)
         # ej[num] = j
         # ek[num] = k
 
-        op_int[num] = 2.0 * i * j * k /1e9
+        op_int[num] = 2.0 * i * j * k / 1e9
         num += 1
       end
     end
   end
 
   # op_int = log10.(op_int)
-  histogram(op_int, xlabel="GEMM intensity\nlog10(GFLOPS)", ylabel="number of instances", label="", title="$(label) block contraction cost",fillalpha=0.35)
+  return histogram(
+    op_int;
+    xlabel="GEMM intensity\nlog10(GFLOPS)",
+    ylabel="number of instances",
+    label="",
+    title="$(label) block contraction cost",
+    fillalpha=0.35,
+  )
   # histogram!(op_int, label=label, fillalpha=0.35)
 end
 
@@ -114,7 +128,7 @@ function histogram_contract_inds(T1::ITensor, T2::ITensor, label::String)
   i = noncommoninds(inds(T1), j)
   k = noncommoninds(j, inds(T2))
 
-  historgram_operational_intensity(i,j,k, label)
+  return historgram_operational_intensity(i, j, k, label)
 end
 
 begin
@@ -130,12 +144,11 @@ begin
   end
 end
 
-
 ### plotting bond dimensions of a single calculation
 psi = BlockSparseGPUTests.replace_ITensor_data_with_random.(psi)
 c = linkind(psi, i)
-cdims = cdims = block_extents(sort(space(c);by=qn_int->qn_int.first))
-t = plot(cdims, label = "site $(i)")
+cdims = cdims = block_extents(sort(space(c); by=qn_int -> qn_int.first))
+t = plot(cdims; label="site $(i)")
 begin
   v = "long_medium"
   t = nothing
@@ -143,21 +156,31 @@ begin
     psi = load("$(@__DIR__)/jld2/$(v)/sparse/scan_60_4/psi_bond_$(bd).jld", "psi")
     length(psi)
     i = length(psi) ÷ 2
-    c = linkind(psi,i)
+    c = linkind(psi, i)
     @show dim(c)
-    cdims = block_extents(sort(space(c);by=qn_int->qn_int.first)) / (bd)
+    cdims = block_extents(sort(space(c); by=qn_int -> qn_int.first)) / (bd)
     #cdims = collect(block_extents(c))
     if isnothing(t)
-      t = plot(cdims, label = "bond dimension $(bd)")
+      t = plot(cdims; label="bond dimension $(bd)")
     else
-      t = plot!(cdims, label = "bond dimension $(bd)")
+      t = plot!(cdims; label="bond dimension $(bd)")
     end
   end
   @show t
-  plot!(xlabel="Block index", ylabel="Block dimension", title="Block distribution for different bond indices\n Nx=60 Ny=2")
+  plot!(;
+    xlabel="Block index",
+    ylabel="Block dimension",
+    title="Block distribution for different bond indices\n Nx=60 Ny=2",
+  )
 end
 
 savefig("$(@__DIR__)/plots/long_medium/diff_bond_dims/nx_60_ny_2_biggest_bond_1980.pdf")
 
-
-construct_psi_h("two_d_hubbard_momentum"; conserve_qns=false, conserve_sz=true, conserve_nf=false, conserve_ky=false, model=BlockSparseGPUTests.Model{BlockSparseGPUTests.TwoDHubbMed}());
+construct_psi_h(
+  "two_d_hubbard_momentum";
+  conserve_qns=false,
+  conserve_sz=true,
+  conserve_nf=false,
+  conserve_ky=false,
+  model=BlockSparseGPUTests.Model{BlockSparseGPUTests.TwoDHubbMed}(),
+);

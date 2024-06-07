@@ -14,7 +14,11 @@ conserve_nf = false
 conserve_nfparity = true
 sweeps = 5
 ψ, h = construct_psi_h(
-      "two_d_hubbard_momentum"; conserve_sz, conserve_nf, conserve_ky, conserve_nfparity, nsweeps=sweeps, dev = cu
-    );
-
-
+  "two_d_hubbard_momentum";
+  conserve_sz,
+  conserve_nf,
+  conserve_ky,
+  conserve_nfparity,
+  nsweeps=sweeps,
+  dev=cu,
+);

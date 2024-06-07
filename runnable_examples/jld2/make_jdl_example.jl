@@ -45,11 +45,11 @@ function make_and_write_tensor_networks(
       "two_d_hubbard"; conserve_qns=blocksparse, model=get_model(model_size), nsweeps=i
     )
 
-  psi = BlockSparseGPUTests.remove_data_from_ITensor.(ψ)
-  H = BlockSparseGPUTests.remove_data_from_ITensor.(h)
-  
-  jldsave("$(foldername)/psi_sweep_$(i).jld"; psi)
-  # jldsave("$(foldername)/H.jld"; H)
+    psi = BlockSparseGPUTests.remove_data_from_ITensor.(ψ)
+    H = BlockSparseGPUTests.remove_data_from_ITensor.(h)
+
+    jldsave("$(foldername)/psi_sweep_$(i).jld"; psi)
+    # jldsave("$(foldername)/H.jld"; H)
   end
 
   # site = isnothing(site) ? div(length(ψ), 2) : site
@@ -73,15 +73,24 @@ make_and_write_tensor_networks(
 )
 
 function make_and_write_2d_momentum_hubbard(
-  foldername; 
-  conserve_ky::Bool= false, conserve_sz::Bool=false, 
-  conserve_nf::Bool= false, conserve_nfparity::Bool=false,
-   model_size::String="small", site=nothing,
-   write_only_psi::Bool= false
+  foldername;
+  conserve_ky::Bool=false,
+  conserve_sz::Bool=false,
+  conserve_nf::Bool=false,
+  conserve_nfparity::Bool=false,
+  model_size::String="small",
+  site=nothing,
+  write_only_psi::Bool=false,
 )
   for i in [5]
     ψ, h = construct_psi_h(
-      "two_d_hubbard"; conserve_ky, conserve_sz, conserve_nf, conserve_nfparity, model=get_model(model_size), nsweeps=i
+      "two_d_hubbard";
+      conserve_ky,
+      conserve_sz,
+      conserve_nf,
+      conserve_nfparity,
+      model=get_model(model_size),
+      nsweeps=i,
     )
 
     if write_only_psi
@@ -106,8 +115,16 @@ function make_and_write_2d_momentum_hubbard(
   return nothing
 end
 
-make_and_write_2d_momentum_hubbard("$(@__DIR__)/2d_momentum_hubbard/medium/dense"; model_size="medium")
+make_and_write_2d_momentum_hubbard(
+  "$(@__DIR__)/2d_momentum_hubbard/medium/dense"; model_size="medium"
+)
 
 ψ, h = construct_psi_h(
-      "two_d_hubbard"; conserve_ky, conserve_sz, conserve_nf, conserve_nfparity, model=get_model(model_size), nsweeps=i
-    )
+  "two_d_hubbard";
+  conserve_ky,
+  conserve_sz,
+  conserve_nf,
+  conserve_nfparity,
+  model=get_model(model_size),
+  nsweeps=i,
+)

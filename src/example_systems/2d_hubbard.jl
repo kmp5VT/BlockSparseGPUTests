@@ -82,7 +82,7 @@ function compute_2d_hubbard(
   cutoff=nothing,
   noise=nothing,
   model=nothing,
-  dev = NDTensors.cpu,
+  dev=NDTensors.cpu,
 )
   model = isnothing(model) ? Model{TwoDHubbMed}() : model
   @show typeof(model)
@@ -149,9 +149,9 @@ function compute_2d_hubbard_conserve_momentum(
   conserve_ky=nothing,
   conserve_sz=nothing,
   conserve_nf=nothing,
-  conserve_nfparity = nothing,
-  model = nothing,
-  dev = nothing
+  conserve_nfparity=nothing,
+  model=nothing,
+  dev=nothing,
 )
   model = isnothing(model) ? Model{TwoDHubbMed}() : model
   defaults = default_vals(model)
@@ -178,8 +178,15 @@ function compute_2d_hubbard_conserve_momentum(
   @show conserve_nfparity
   @show dev
 
-  sites = siteinds("ElecK", N; conserve_sz = conserve_sz, conserve_nf = conserve_nf, conserve_ky, modulus_ky=Ny,
-  conserve_nfparity=conserve_nfparity)
+  sites = siteinds(
+    "ElecK",
+    N;
+    conserve_sz=conserve_sz,
+    conserve_nf=conserve_nf,
+    conserve_ky,
+    modulus_ky=Ny,
+    conserve_nfparity=conserve_nfparity,
+  )
 
   os = hubbard(; Nx, Ny, t, U, ky=true)
   H = MPO(os, sites)
@@ -202,7 +209,6 @@ function compute_2d_hubbard_conserve_momentum(
   energy, psi = dmrg(dev(H), dev(psi0); nsweeps, maxdim, cutoff, noise)
   return (energy, psi, H)
 end
-
 
 ## TODO 
 ## First I need to run the computations with different symmetries to get a distribution for each kind.
