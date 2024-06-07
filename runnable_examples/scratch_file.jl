@@ -176,11 +176,3 @@ end
 
 savefig("$(@__DIR__)/plots/long_medium/diff_bond_dims/nx_60_ny_2_biggest_bond_1980.pdf")
 
-construct_psi_h(
-  "two_d_hubbard_momentum";
-  conserve_qns=false,
-  conserve_sz=true,
-  conserve_nf=false,
-  conserve_ky=false,
-  model=BlockSparseGPUTests.Model{BlockSparseGPUTests.TwoDHubbMed}(),
-);
