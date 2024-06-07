@@ -1,0 +1,10 @@
+conserve_ky = false
+conserve_sz = true
+conserve_nf = true
+conserve_nfparity = true
+dev = NDTensors.GPUArraysCoreExtensions.cpu
+After sweep 1 energy=-12.332273537610334  maxlinkdim=100 maxerr=4.77E-04 time=28.311
+After sweep 2 energy=-13.372374900761885  maxlinkdim=200 maxerr=4.24E-04 time=4.647
+After sweep 3 energy=-13.571466326200579  maxlinkdim=400 maxerr=2.40E-04 time=10.026
+After sweep 4 energy=-13.651361922497578  maxlinkdim=800 maxerr=8.95E-05 time=24.160
+After sweep 5 energy=-13.693409058665779  maxlinkdim=1600 maxerr=1.62E-05 time=58.980
