@@ -48,11 +48,11 @@ function make_and_write_2d_momentum_hubbard(
   write_only_psi::Bool=false,
 )
   ψ, h = construct_psi_h(
-    "two_d_hubbard";
-    conserve_ky,
-    conserve_sz,
-    conserve_nf,
-    conserve_nfparity,
+    "two_d_hubbard_momentum";
+    conserve_ky=conserve_ky,
+    conserve_sz=conserve_sz,
+    conserve_nf=conserve_nf,
+    conserve_nfparity=conserve_nfparity,
     model=get_model(model_size),
   )
 
@@ -60,6 +60,9 @@ function make_and_write_2d_momentum_hubbard(
     psi = BlockSparseGPUTests.remove_data_from_ITensor.(ψ)
     jldsave("$(foldername)/psi.jld"; psi)
   else
+    psi = BlockSparseGPUTests.remove_data_from_ITensor.(ψ)
+    jldsave("$(foldername)/psi.jld"; psi)
+
     site = isnothing(site) ? div(length(ψ), 2) : site
     TNs = make_all_tensor_networks(ψ, h, site)
     names = ["E1", "E2", "S1", "S2", "S3"]
@@ -82,9 +85,9 @@ conserve_sz = false
 conserve_nf = false
 conserve_nfparity = false
 make_and_write_2d_momentum_hubbard(
-  "$(@__DIR__)/2d_momentum_hubbard/medium/dense"; 
-  conserve_ky,
-  conserve_sz,
-  conserve_nf,
-  conserve_nfparity
+  "$(@__DIR__)/2d_momentum_hubbard/medium/symm_dense"; 
+  conserve_ky=conserve_ky,
+  conserve_sz=conserve_sz,
+  conserve_nf=conserve_nf,
+  conserve_nfparity=conserve_nfparity
 )
