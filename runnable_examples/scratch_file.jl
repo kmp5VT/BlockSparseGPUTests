@@ -153,7 +153,7 @@ begin
   v = "long_medium"
   t = nothing
   for bd in [200, 400, 800, 1600]
-    psi = load("$(@__DIR__)/jld2/$(v)/sparse/scan_60_4/psi_bond_$(bd).jld", "psi")
+    psi = load("$(@__DIR__)/saved_tensors_jld2/$(v)/sparse/scan_60_4/psi_bond_$(bd).jld", "psi")
     length(psi)
     i = length(psi) ÷ 2
     c = linkind(psi, i)
