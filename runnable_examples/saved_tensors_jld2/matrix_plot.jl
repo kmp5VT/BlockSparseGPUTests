@@ -23,5 +23,5 @@ all_blocks = [block_extents(ind(pmat,1)), block_extents(ind(pmat,2))]
 nz_blocks = Vector{CartesianIndices{2, Tuple{UnitRange{Int64}, UnitRange{Int64}}}}()
 
 
-using Makie, GLMakie, ModernGL, InteractiveViz
+using GLMakie, InteractiveViz
 fig = iheatmap(array(dense(qmat)); cursor=true, colormap=:magma, legend=true)
