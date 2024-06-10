@@ -17,7 +17,7 @@ end
 ## symm_nfparity
 ## S2 corresponds to the largest tensor contraction and tensor
 ## network naming is the same as that found in BlockSparseGPUTests/notes/DMRG_contractions.pdf 
-d = jldopen("$(@__DIR__)/2d_momentum_hubbard/medium/symm_nfparity/S2.jld")
+d = jldopen("$(@__DIR__)/saved_tensors_jld2/2d_momentum_hubbard/medium/symm_nfparity/S2.jld")
 p = d["T1"]
 q = d["T2"]
 commoninds(p, q)
