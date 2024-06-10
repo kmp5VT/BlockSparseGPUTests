@@ -11,10 +11,10 @@ function block_extents(ind::Vector)
 end
 
 ## symmetry options
-## kysznf, 
-## sznf
-## nf
-## nfparity
+## symm_kysznf, 
+## symm_sznf
+## symm_nf
+## symm_nfparity
 ## S2 corresponds to the largest tensor contraction and tensor
 ## network naming is the same as that found in BlockSparseGPUTests/notes/DMRG_contractions.pdf 
 d = jldopen("$(@__DIR__)/2d_momentum_hubbard/medium/symm_nfparity/S2.jld")
