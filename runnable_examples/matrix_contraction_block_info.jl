@@ -1,4 +1,4 @@
-include("$(@__DIR__)/../../src/BlockSparseGPUTests.jl")
+include("$(@__DIR__)/../src/BlockSparseGPUTests.jl")
 using .BlockSparseGPUTests
 using .BlockSparseGPUTests: Model, TwoDHubbSmall, TwoDHubbMed, TwoDHubbLarge
 using ITensors, ITensorMPS, JLD2
@@ -57,7 +57,10 @@ T1nz_block_sizes = compute_nz_blocks(T1mat)
 T2nz_block_sizes = compute_nz_blocks(T2mat)
 
 ###Use this to plot left and right hand tensors
-using GLMakie, InteractiveViz
+heatplottensors = false
+if (heatplottensors)
+  using GLMakie, InteractiveViz
 
-fig = iheatmap(array(dense(T1mat)); cursor=true, colormap=:magma, legend=true)
-fig = iheatmap(array(dense(T2mat)); cursor=true, colormap=:magma, legend=true)
+  fig = iheatmap(array(dense(T1mat)); cursor=true, colormap=:magma, legend=true)
+  fig = iheatmap(array(dense(T2mat)); cursor=true, colormap=:magma, legend=true)
+end
