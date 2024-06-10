@@ -84,7 +84,7 @@ for x in 1:4
 
   ## organize all blocks from largest to smallest
   sz = sort(block_extents(s); rev=true)
-  
+
   t = plot!(sz; label=labels[x], markershape=markers[x])
 end
 

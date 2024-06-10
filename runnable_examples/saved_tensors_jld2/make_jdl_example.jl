@@ -85,9 +85,9 @@ conserve_sz = false
 conserve_nf = false
 conserve_nfparity = false
 make_and_write_2d_momentum_hubbard(
-  "$(@__DIR__)/2d_momentum_hubbard/medium/symm_dense"; 
+  "$(@__DIR__)/2d_momentum_hubbard/medium/symm_dense";
   conserve_ky=conserve_ky,
   conserve_sz=conserve_sz,
   conserve_nf=conserve_nf,
-  conserve_nfparity=conserve_nfparity
+  conserve_nfparity=conserve_nfparity,
 )
