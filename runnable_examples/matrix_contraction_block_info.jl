@@ -18,14 +18,17 @@ end
 ## S2 corresponds to the largest tensor contraction and tensor
 ## network naming is the same as that found in BlockSparseGPUTests/notes/DMRG_contractions.pdf 
 d = jldopen("$(@__DIR__)/saved_tensors_jld2/2d_momentum_hubbard/medium/symm_nfparity/S2.jld")
-p = d["T1"]
-q = d["T2"]
-commoninds(p, q)
-innerinds = commoninds(p, q)
-poutinds = noncommoninds(innerinds, inds(p))
-qoutinds = noncommoninds(innerinds, inds(q))
-T1mat = BlockSparseGPUTests.replace_ITensor_data_with_random(p) * combiner(poutinds)
-T2mat = BlockSparseGPUTests.replace_ITensor_data_with_random(q) * combiner(qoutinds)
+T1 = d["T1"]
+T2 = d["T2"]
+commoninds(T1, T2)
+## Find the inner indices
+innerinds = commoninds(T1, T2)
+## Find the outer indices for each tensor
+poutinds = noncommoninds(innerinds, inds(T1))
+qoutinds = noncommoninds(innerinds, inds(T2))
+## Use combiner to fuse all the outer indices and matricize each tensor
+T1mat = BlockSparseGPUTests.replace_ITensor_data_with_random(T1) * combiner(poutinds)
+T2mat = BlockSparseGPUTests.replace_ITensor_data_with_random(T2) * combiner(qoutinds)
 
 function compute_all_blocks(T::ITensor)
   all_block_sizes = Tuple{Int64,Int64}[]
@@ -55,4 +58,6 @@ T2nz_block_sizes = compute_nz_blocks(T2mat)
 
 ###Use this to plot left and right hand tensors
 using GLMakie, InteractiveViz
-fig = iheatmap(array(dense(qmat)); cursor=true, colormap=:magma, legend=true)
+
+fig = iheatmap(array(dense(T1mat)); cursor=true, colormap=:magma, legend=true)
+fig = iheatmap(array(dense(T2mat)); cursor=true, colormap=:magma, legend=true)
