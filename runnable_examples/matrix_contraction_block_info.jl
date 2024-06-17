@@ -27,8 +27,8 @@ innerinds = commoninds(T1, T2)
 poutinds = noncommoninds(innerinds, inds(T1))
 qoutinds = noncommoninds(innerinds, inds(T2))
 ## Use combiner to fuse all the outer indices and matricize each tensor
-T1mat = BlockSparseGPUTests.replace_ITensor_data_with_random(T1) * combiner(poutinds)
-T2mat = BlockSparseGPUTests.replace_ITensor_data_with_random(T2) * combiner(qoutinds)
+T1mat = BlockSparseGPUTests.replace_ITensor_data_with_ones(T1) * combiner(poutinds)
+T2mat = BlockSparseGPUTests.replace_ITensor_data_with_ones(T2) * combiner(qoutinds)
 
 function compute_all_blocks(T::ITensor)
   all_block_sizes = Tuple{Int64,Int64}[]
