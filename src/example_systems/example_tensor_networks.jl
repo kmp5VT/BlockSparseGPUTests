@@ -30,7 +30,7 @@ function make_EL2_network(EL11, EL12, H, site)
 end
 
 function make_S2_network(EL21, EL22, ψ, S11, S12, site)
-  S21 = EL21 * EL22 * ψ[site - 1] 
+  S21 = EL21 * EL22 * ψ[site - 1]
   S22 = S11 * S12
   return S21, S22
 end
