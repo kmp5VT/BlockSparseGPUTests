@@ -7,7 +7,7 @@ function make_all_tensor_networks(ψ, H, site)
   S12 = ψ[site + 1]
 
   ## Contract the twosite with the environment tensor
-  S21, S22 = make_S2_network(EL21, ψ, S11, S12, site)
+  S21, S22 = make_S2_network(EL21, EL22, ψ, S11, S12, site)
 
   S31, S32 = make_S3_network(ψ, H, S22, site)
 
@@ -29,8 +29,8 @@ function make_EL2_network(EL11, EL12, H, site)
   return EL21, EL22
 end
 
-function make_S2_network(EL21, ψ, S11, S12, site)
-  S21 = EL21 * ψ[site - 1]
+function make_S2_network(EL21, EL22, ψ, S11, S12, site)
+  S21 = EL21 * EL22 * ψ[site - 1] 
   S22 = S11 * S12
   return S21, S22
 end
