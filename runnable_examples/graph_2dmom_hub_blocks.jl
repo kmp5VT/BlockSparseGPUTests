@@ -96,3 +96,32 @@ plot!(;
 )
 plot!(; xscale=:log10)
 savefig("$(@__DIR__)/plots/medium/bond_dim/2d_momentum_1600.pdf")
+
+
+
+######################################
+## Plotting largest blocks vs maxdim
+obs = BlockSparseGPUTests.BondDimObserver(0, Int64[])
+ψ, h = construct_psi_h(
+  "two_d_hubbard_momentum";
+  conserve_ky = true,
+  conserve_sz = true,
+  conserve_nf = true,
+  conserve_nfparity = true,
+  model=BlockSparseGPUTests.Model{BlockSparseGPUTests.TwoDHubbMed}(),
+  nsweeps=5,
+  observer=obs
+);
+maxdims = [100, 200, 400, 800, 1600]
+kysznf_dims = Int64[8,10,17,30,56]
+sznf_dims = Int64[16,26,47,86,161]
+nf_dims = Int64[32,61,116,224,431]
+nfparity_dims = Int64[52,100,200,402,805]
+obs.maxdims
+using Plots
+plot(maxdims, kysznf_dims, label="ky+sz+nf", markershape=:square)
+plot!(maxdims, sznf_dims, label="sz+nf", markershape=:circle)
+plot!(maxdims, nf_dims, label="nf", markershape=:cross)
+plot!(maxdims, nfparity_dims, label="nfparity", markershape=:diamond)
+plot!(title="Maxdim vs largest block", xlabel="Set maxdim", ylabel="Largest block size")
+savefig("$(@__DIR__)/plots/2d-momentum-medium/block_analysis/maxdim_vs_blockdim.pdf")
