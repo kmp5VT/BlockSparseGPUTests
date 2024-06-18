@@ -1,0 +1,10 @@
+conserve_ky = false
+conserve_sz = true
+conserve_nf = true
+conserve_nfparity = true
+dev = CUDA.cu
+After sweep 1 energy=-12.284953  maxlinkdim=100 maxerr=4.42E-04 time=50.743
+After sweep 2 energy=-13.374536  maxlinkdim=200 maxerr=4.20E-04 time=42.074
+After sweep 3 energy=-13.572147  maxlinkdim=400 maxerr=2.49E-04 time=54.338
+After sweep 4 energy=-13.645665  maxlinkdim=800 maxerr=8.16E-05 time=48.937
+After sweep 5 energy=-13.689334  maxlinkdim=1600 maxerr=1.57E-05 time=56.395

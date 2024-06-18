@@ -9,7 +9,6 @@ include("summarize_itensor.jl")
 include("modify_itensor_data.jl")
 include("construct_psi_h.jl")
 include("construct_tensor_network_components.jl")
-include("timings_scripts.jl")
 
 include("export.jl")
 

@@ -82,10 +82,11 @@ function compute_2d_hubbard(
   cutoff=nothing,
   noise=nothing,
   model=nothing,
-  dev=identity,
+  dev=NDTensors.cpu,
   kwargs...,
 )
-  model = isnothing(model) ? Model{TwoDHubbSmall}() : model
+  model = isnothing(model) ? Model{TwoDHubbMed}() : model
+  @show typeof(model)
   defaults = default_vals(model)
   conserve_qns = (isnothing(conserve_qns) ? defaults[1] : conserve_qns)
   yperiodic = (isnothing(yperiodic) ? defaults[2] : yperiodic)
@@ -125,7 +126,7 @@ function compute_2d_hubbard(
   # numbers as `state`
   psi0 = randomMPS(sites, state)
 
-  energy, psi = dmrg(dev(H), dev(psi0); nsweeps, maxdim, cutoff, noise, kwargs...)
+  energy, psi = dmrg(H, psi0; nsweeps, maxdim, cutoff, noise)
 
   return energy, psi, H
 end
@@ -154,7 +155,7 @@ function compute_2d_hubbard_conserve_momentum(
   dev=nothing,
   kwargs...,
 )
-  model = isnothing(model) ? Model{TwoDHubbSmall}() : model
+  model = isnothing(model) ? Model{TwoDHubbMed}() : model
   defaults = default_vals(model)
   conserve_qns = (isnothing(conserve_qns) ? defaults[1] : conserve_qns)
   yperiodic = (isnothing(yperiodic) ? defaults[2] : yperiodic)
@@ -169,7 +170,7 @@ function compute_2d_hubbard_conserve_momentum(
   maxdim = isnothing(maxdim) ? defaults[8] : maxdim
   cutoff = isnothing(cutoff) ? defaults[9] : cutoff
   noise = isnothing(noise) ? defaults[10] : noise
-  conserve_ky = isnothing(conserve_ky) ? true : conserve_ky
+  conserve_ky = isnothing(conserve_ky) ? false : conserve_ky
   conserve_sz = isnothing(conserve_sz) ? false : conserve_sz
   conserve_nf = isnothing(conserve_nf) ? false : conserve_nf
   conserve_nfparity = isnothing(conserve_nfparity) ? false : conserve_nfparity

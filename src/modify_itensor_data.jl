@@ -18,6 +18,15 @@ function replace_ITensor_data_with_random(T::ITensor)
   return NDTensors.setstorage(T, randomstorage)
 end
 
+function replace_ITensor_data_with_ones(T::ITensor)
+  store = storage(T)
+  nelems = length(store)
+  datatype = NDTensors.TypeParameterAccessors.parenttype(similar(ITensors.data(T)))
+  onedata = fill!(NDTensors.generic_zeros(datatype, nelems), one(eltype(T)))
+  onestorage = NDTensors.setdata(store, onedata)
+  return NDTensors.setstorage(T, onestorage)
+end
+
 function replace_ITensor_data_with_random(T::ITensor, datatype::Type{<:AbstractArray})
   store = storage(T)
   nelems = length(store)

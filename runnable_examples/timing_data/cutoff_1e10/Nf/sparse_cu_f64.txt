@@ -1,0 +1,10 @@
+conserve_ky = false
+conserve_sz = false
+conserve_nf = true
+conserve_nfparity = true
+dev = NDTensors.CUDAExtensions.cu
+After sweep 1 energy=-11.97898166345306  maxlinkdim=100 maxerr=3.20E-04 time=36.424
+After sweep 2 energy=-13.341839461270471  maxlinkdim=200 maxerr=2.39E-04 time=10.050
+After sweep 3 energy=-13.531608888945463  maxlinkdim=400 maxerr=1.43E-04 time=12.130
+After sweep 4 energy=-13.591694185770185  maxlinkdim=800 maxerr=5.03E-05 time=13.924
+After sweep 5 energy=-13.63835045657177  maxlinkdim=1600 maxerr=1.48E-05 time=31.971

@@ -1,0 +1,10 @@
+conserve_ky = false
+conserve_sz = false
+conserve_nf = false
+conserve_nfparity = false
+dev = adapt32
+After sweep 1 energy=-18.67896  maxlinkdim=100 maxerr=3.21E-05 time=21.917
+After sweep 2 energy=-19.772087  maxlinkdim=200 maxerr=7.27E-06 time=8.810
+After sweep 3 energy=-19.997112  maxlinkdim=400 maxerr=2.01E-06 time=35.014
+After sweep 4 energy=-20.072346  maxlinkdim=800 maxerr=3.09E-07 time=100.555
+After sweep 5 energy=-20.103994  maxlinkdim=1600 maxerr=2.03E-07 time=463.518
