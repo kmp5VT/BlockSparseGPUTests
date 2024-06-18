@@ -83,6 +83,7 @@ function compute_2d_hubbard(
   noise=nothing,
   model=nothing,
   dev=identity,
+  kwargs...,
 )
   model = isnothing(model) ? Model{TwoDHubbSmall}() : model
   defaults = default_vals(model)
@@ -124,7 +125,7 @@ function compute_2d_hubbard(
   # numbers as `state`
   psi0 = randomMPS(sites, state)
 
-  energy, psi = dmrg(H, psi0; nsweeps, maxdim, cutoff, noise)
+  energy, psi = dmrg(dev(H), dev(psi0); nsweeps, maxdim, cutoff, noise, kwargs...)
 
   return energy, psi, H
 end
@@ -151,6 +152,7 @@ function compute_2d_hubbard_conserve_momentum(
   conserve_nfparity=nothing,
   model=nothing,
   dev=nothing,
+  kwargs...,
 )
   model = isnothing(model) ? Model{TwoDHubbSmall}() : model
   defaults = default_vals(model)
@@ -205,7 +207,7 @@ function compute_2d_hubbard_conserve_momentum(
   itensor_rng = Xoshiro()
   Random.seed!(itensor_rng, seed)
   psi0 = randomMPS(itensor_rng, sites, state; linkdims=2)
-  energy, psi = dmrg(dev(H), dev(psi0); nsweeps, maxdim, cutoff, noise)
+  energy, psi = dmrg(dev(H), dev(psi0); nsweeps, maxdim, cutoff, noise, kwargs...)
   return (energy, psi, H)
 end
 

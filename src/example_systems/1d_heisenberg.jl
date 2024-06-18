@@ -41,12 +41,12 @@ Optional Keyword Arguments
 function compute_1d_heisenberg(
   N;
   conserve_qns=nothing,
-  conserve_pns=false,
   nsweeps=nothing,
   maxdim=nothing,
   cutoff=nothing,
   noise=nothing,
   dev=nothing,
+  kwargs...,
 )
   defaults = default_vals(Model{OneDHeis}())
 
@@ -71,7 +71,7 @@ function compute_1d_heisenberg(
   psi0 = randomMPS(sites, state, maxdim[1])
 
   # Run the DMRG algorithm, returning energy and optimized MPS'
-  energy, psi = dmrg(H, psi0; nsweeps, maxdim, cutoff, outputlevel=0)
+  energy, psi = dmrg(dev(H), dev(psi0); nsweeps, maxdim, cutoff, outputlevel=0, kwargs...)
   return (energy, psi, H)
 end
 
@@ -79,11 +79,11 @@ function compute_1d_heisenberg(
   N,
   observer::DMRGObserver;
   conserve_qns=nothing,
-  conserve_pns=false,
   nsweeps=nothing,
   maxdim=nothing,
   cutoff=nothing,
   noise=nothing,
+  kwargs...,
 )
   defaults = default_vals(Model{OneDHeis}())
 

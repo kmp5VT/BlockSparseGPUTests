@@ -1,6 +1,7 @@
 module BlockSparseGPUTests
 
 include("example_systems/model.jl")
+include("example_systems/observers.jl")
 include("example_systems/1d_heisenberg.jl")
 include("example_systems/2d_hubbard.jl")
 include("example_systems/example_tensor_networks.jl")
