@@ -1,0 +1,493 @@
+[2024-10-16 12:49:04][cuTENSOR][2040502][Api][cutensorCreate] handle=0X7FFC665991F8
+[2024-10-16 12:49:05][cuTENSOR][2040502][Hint][cutensorCreate] cuTENSOR version: 2.0.2
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreate] CUTENSOR_COMPUTE_DESC_16F=0X7F29887F1940 CUTENSOR_COMPUTE_DESC_16BF=0X7F29887F1920 CUTENSOR_COMPUTE_DESC_TF32=0X7F29887F1900 CUTENSOR_COMPUTE_DESC_3XTF32=0X7F29887F18E0 CUTENSOR_COMPUTE_DESC_32F=0X7F29887F18C0 CUTENSOR_COMPUTE_DESC_64F=0X7F29887F18A0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreate] handle=0X7FFC665991F8 points to *handle=0X371A5D0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateBlockSparseTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66599158 numModes=3 numNonZeroBlocks=25 numSectionsPerMode=[3,9,9] extent=[1,2,1,6,47,181,350,431,350,182,47,6,9,65,200,360,430,331,159,43,2] dataType=1 nonZeroCoordinates=[1,0,0,0,1,0,2,0,1,1,1,1,0,2,1,2,1,2,1,2,2,0,3,2,2,2,3,1,3,3,0,4,3,2,3,4,1,4,4,0,5,4,2,4,5,1,5,5,0,6,5,2,5,6,1,6,6,0,7,6,2,6,7,1,7,7,0,8,7,2,7,8,1,8,8] stride=[]
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateBlockSparseTensorDescriptor] desc=0X7FFC66599158 points to *desc=0X1D03190
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateBlockSparseTensorDescriptor] handle=0X371A5D0 desc=0X7FFC665990E8 numModes=3 numNonZeroBlocks=25 numSectionsPerMode=[3,9,9] extent=[1,2,1,15,83,216,373,424,319,141,28,1,6,47,181,350,431,350,182,47,6] dataType=1 nonZeroCoordinates=[1,0,0,0,1,0,2,0,1,1,1,1,0,2,1,2,1,2,1,2,2,0,3,2,2,2,3,1,3,3,0,4,3,2,3,4,1,4,4,0,5,4,2,4,5,1,5,5,0,6,5,2,5,6,1,6,6,0,7,6,2,6,7,1,7,7,0,8,7,2,7,8,1,8,8] stride=[]
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateBlockSparseTensorDescriptor] desc=0X7FFC665990E8 points to *desc=0X1CFF930
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateBlockSparseTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66599078 numModes=4 numNonZeroBlocks=71 numSectionsPerMode=[3,9,3,9] extent=[1,2,1,9,65,200,360,430,331,159,43,2,1,2,1,15,83,216,373,424,319,141,28,1] dataType=1 nonZeroCoordinates=[1,0,1,0,1,0,0,1,0,0,2,0,0,0,1,1,0,0,0,2,2,1,1,0,2,1,0,1,1,1,2,0,1,1,1,1,1,1,0,2,0,1,2,1,0,1,1,2,0,1,0,3,2,2,2,0,2,2,1,1,2,2,0,2,1,2,2,1,1,2,1,2,1,2,0,3,0,2,2,2,0,2,1,3,0,2,0,4,2,3,2,1,2,3,1,2,2,3,0,3,1,3,2,2,1,3,1,3,1,3,0,4,0,3,2,3,0,3,1,4,0,3,0,5,2,4,2,2,2,4,1,3,2,4,0,4,1,4,2,3,1,4,1,4,1,4,0,5,0,4,2,4,0,4,1,5,0,4,0,6,2,5,2,3,2,5,1,4,2,5,0,5,1,5,2,4,1,5,1,5,1,5,0,6,0,5,2,5,0,5,1,6,0,5,0,7,2,6,2,4,2,6,1,5,2,6,0,6,1,6,2,5,1,6,1,6,1,6,0,7,0,6,2,6,0,6,1,7,0,6,0,8,2,7,2,5,2,7,1,6,2,7,0,7,1,7,2,6,1,7,1,7,1,7,0,8,0,7,2,7,0,7,1,8,2,8,2,6,2,8,1,7,2,8,0,8,1,8,2,7,1,8,1,8] stride=[]
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateBlockSparseTensorDescriptor] desc=0X7FFC66599078 points to *desc=0X13797F0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateBlockSparseContraction] handle=0X371A5D0 desc=0X7FFC66599028 descA=0X1D03190 opA=1 descB=0X1CFF930 opB=1 descC=0X13797F0 opC=1 descD=0X13797F0 descCompute=0X7F29887F18A0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateBlockSparseContraction] desc=0X7FFC66599028 points to *desc=0X3904EF0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorBlockSparseEstimateWorkspaceSize] handle=0X371A5D0, desc=0X3904EF0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateBlockSparsePlan] handle=0X371A5D0 plan=0X7FFC66598FE8 desc=0X3904EF0 workspaceSizeLimit=144078552
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateBlockSparsePlan] desc=0X7FFC66598FE8 points to *desc=0X25498B0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorBlockSparseContract] handle=0X371A5D0 plan=0X25498B0 alpha=0X7FFC66598FB8 A=0XF6493F0 B=0XF649320 beta=0X7FFC66598FB0 C=0X1D4E1A0 D=0X1D4E1A0 workspace=0X7F290A000000 workspaceSize=144078552 stream=0X2441EB0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CE8 numModes=3 extent=[2,6,9] stride=[1,2,12] dataType=1 alignmentRequirement=4194304
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CE8 points to *desc=0X2CFD220
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF0 numModes=3 extent=[2,15,6] stride=[1,2,30] dataType=1 alignmentRequirement=512
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF0 points to *desc=0X279D1E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF8 numModes=4 extent=[2,9,2,15] stride=[1,2,18,36] dataType=1 alignmentRequirement=1024
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF8 points to *desc=0X24850B0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateContraction] handle=0X371A5D0 desc=0X7FFC66596D00 descA=0X2CFD220 modeA=[4,1,5] opA=1 descB=0X279D1E0 modeB=[6,7,1] opB=1 descC=0X24850B0 modeC=[4,5,6,7] opC=1 descD=0X24850B0 modeD=[4,5,6,7] descCompute=0X7FFC66596D20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateContraction] desc=0X7FFC66596D00 points to *desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlanPreference] handle=0X371A5D0 pref=0X7FFC66596D08 algo=-1 jitMode=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlanPreference] pref=0X7FFC66596D08 points to *pref=0X25224B0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorPlanPreferenceSetAttribute] handle=0X371A5D0 pref=0X25224B0 attr=103 buf=0X7FFC66596CE4 sizeInBytes=4
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorPlanPreferenceSetAttribute] CUTENSOR_PLAN_PREFERENCE_FAST_PLANNING set to 1 in pref=0X25224B0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlan] handle=0X371A5D0 plan=0X7FFC66596D10 desc=0XEFD4940 pref=0X25224B0 workspaceSizeLimit=144078552
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlan] plan=0X7FFC66596D10 points to *plan=0XF64FD10
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorContract] handle=0X371A5D0 plan=0XF64FD10 alpha=0X7FFC66598FB8 A=0X7F2914400000 B=0X7F2914400200 beta=0X7FFC66598FB0 C=0X7F2914400400 D=0X7F2914400400 workspace=0X7F290A000000 workspaceSize=144078552 stream=0X2441EB0 id=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlan] plan=0XF64FD10
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlanPreference] pref=0X25224B0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyOperationDescriptor] desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X24850B0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X279D1E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2CFD220
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CE8 numModes=3 extent=[2,6,9] stride=[1,2,12] dataType=1 alignmentRequirement=4194304
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CE8 points to *desc=0X279D1E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF0 numModes=3 extent=[1,83,6] stride=[1,1,83] dataType=1 alignmentRequirement=32
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF0 points to *desc=0X24850B0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF8 numModes=4 extent=[2,9,1,83] stride=[1,2,18,18] dataType=1 alignmentRequirement=32
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF8 points to *desc=0X25224B0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateContraction] handle=0X371A5D0 desc=0X7FFC66596D00 descA=0X279D1E0 modeA=[4,1,5] opA=1 descB=0X24850B0 modeB=[6,7,1] opB=1 descC=0X25224B0 modeC=[4,5,6,7] opC=1 descD=0X25224B0 modeD=[4,5,6,7] descCompute=0X7FFC66596D20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateContraction] desc=0X7FFC66596D00 points to *desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlanPreference] handle=0X371A5D0 pref=0X7FFC66596D08 algo=-1 jitMode=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlanPreference] pref=0X7FFC66596D08 points to *pref=0X250FF70
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorPlanPreferenceSetAttribute] handle=0X371A5D0 pref=0X250FF70 attr=103 buf=0X7FFC66596CE4 sizeInBytes=4
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorPlanPreferenceSetAttribute] CUTENSOR_PLAN_PREFERENCE_FAST_PLANNING set to 1 in pref=0X250FF70
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlan] handle=0X371A5D0 plan=0X7FFC66596D10 desc=0XEFD4940 pref=0X250FF70 workspaceSizeLimit=144078552
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlan] plan=0X7FFC66596D10 points to *plan=0XF64FD10
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorContract] handle=0X371A5D0 plan=0XF64FD10 alpha=0X7FFC66598FB8 A=0X7F2914400000 B=0X7F29144007A0 beta=0X7FFC66598FB0 C=0X7F29144014E0 D=0X7F29144014E0 workspace=0X7F290A000000 workspaceSize=144078552 stream=0X2441EB0 id=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlan] plan=0XF64FD10
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlanPreference] pref=0X250FF70
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyOperationDescriptor] desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X25224B0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X24850B0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X279D1E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CE8 numModes=3 extent=[1,47,9] stride=[1,1,47] dataType=1 alignmentRequirement=32
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CE8 points to *desc=0X24850B0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF0 numModes=3 extent=[1,15,47] stride=[1,1,15] dataType=1 alignmentRequirement=16
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF0 points to *desc=0X25224B0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF8 numModes=4 extent=[1,9,1,15] stride=[1,1,9,9] dataType=1 alignmentRequirement=16
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF8 points to *desc=0X250FF70
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateContraction] handle=0X371A5D0 desc=0X7FFC66596D00 descA=0X24850B0 modeA=[4,1,5] opA=1 descB=0X25224B0 modeB=[6,7,1] opB=1 descC=0X250FF70 modeC=[4,5,6,7] opC=1 descD=0X250FF70 modeD=[4,5,6,7] descCompute=0X7FFC66596D20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateContraction] desc=0X7FFC66596D00 points to *desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlanPreference] handle=0X371A5D0 pref=0X7FFC66596D08 algo=-1 jitMode=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlanPreference] pref=0X7FFC66596D08 points to *pref=0X2CB6430
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorPlanPreferenceSetAttribute] handle=0X371A5D0 pref=0X2CB6430 attr=103 buf=0X7FFC66596CE4 sizeInBytes=4
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorPlanPreferenceSetAttribute] CUTENSOR_PLAN_PREFERENCE_FAST_PLANNING set to 1 in pref=0X2CB6430
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlan] handle=0X371A5D0 plan=0X7FFC66596D10 desc=0XEFD4940 pref=0X2CB6430 workspaceSizeLimit=144078552
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlan] plan=0X7FFC66596D10 points to *plan=0XF77DB60
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorContract] handle=0X371A5D0 plan=0XF77DB60 alpha=0X7FFC66598FB8 A=0X7F2914400360 B=0X7F2914401190 beta=0X7FFC66598FB0 C=0X7F29144032B0 D=0X7F29144032B0 workspace=0X7F290A000000 workspaceSize=144078552 stream=0X2441EB0 id=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlan] plan=0XF77DB60
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlanPreference] pref=0X2CB6430
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyOperationDescriptor] desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X250FF70
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X25224B0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X24850B0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CE8 numModes=3 extent=[1,47,9] stride=[1,1,47] dataType=1 alignmentRequirement=32
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CE8 points to *desc=0X24850B0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF0 numModes=3 extent=[2,83,47] stride=[1,2,166] dataType=1 alignmentRequirement=8
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF0 points to *desc=0X25224B0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF8 numModes=4 extent=[1,9,2,83] stride=[1,1,9,18] dataType=1 alignmentRequirement=8
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF8 points to *desc=0X250FF70
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateContraction] handle=0X371A5D0 desc=0X7FFC66596D00 descA=0X24850B0 modeA=[4,1,5] opA=1 descB=0X25224B0 modeB=[6,7,1] opB=1 descC=0X250FF70 modeC=[4,5,6,7] opC=1 descD=0X250FF70 modeD=[4,5,6,7] descCompute=0X7FFC66596D20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateContraction] desc=0X7FFC66596D00 points to *desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlanPreference] handle=0X371A5D0 pref=0X7FFC66596D08 algo=-1 jitMode=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlanPreference] pref=0X7FFC66596D08 points to *pref=0X24BE6E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorPlanPreferenceSetAttribute] handle=0X371A5D0 pref=0X24BE6E0 attr=103 buf=0X7FFC66596CE4 sizeInBytes=4
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorPlanPreferenceSetAttribute] CUTENSOR_PLAN_PREFERENCE_FAST_PLANNING set to 1 in pref=0X24BE6E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlan] handle=0X371A5D0 plan=0X7FFC66596D10 desc=0XEFD4940 pref=0X24BE6E0 workspaceSizeLimit=144078552
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlan] plan=0X7FFC66596D10 points to *plan=0XF77DD00
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorContract] handle=0X371A5D0 plan=0XF77DD00 alpha=0X7FFC66598FB8 A=0X7F2914400360 B=0X7F2914401808 beta=0X7FFC66598FB0 C=0X7F2914400838 D=0X7F2914400838 workspace=0X7F290A000000 workspaceSize=144078552 stream=0X2441EB0 id=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlan] plan=0XF77DD00
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlanPreference] pref=0X24BE6E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyOperationDescriptor] desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X250FF70
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X25224B0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X24850B0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CE8 numModes=3 extent=[1,47,9] stride=[1,1,47] dataType=1 alignmentRequirement=32
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CE8 points to *desc=0X25224B0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF0 numModes=3 extent=[1,216,47] stride=[1,1,216] dataType=1 alignmentRequirement=16
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF0 points to *desc=0X250FF70
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF8 numModes=4 extent=[1,9,1,216] stride=[1,1,9,9] dataType=1 alignmentRequirement=16
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF8 points to *desc=0X24BE6E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateContraction] handle=0X371A5D0 desc=0X7FFC66596D00 descA=0X25224B0 modeA=[4,1,5] opA=1 descB=0X250FF70 modeB=[6,7,1] opB=1 descC=0X24BE6E0 modeC=[4,5,6,7] opC=1 descD=0X24BE6E0 modeD=[4,5,6,7] descCompute=0X7FFC66596D20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateContraction] desc=0X7FFC66596D00 points to *desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlanPreference] handle=0X371A5D0 pref=0X7FFC66596D08 algo=-1 jitMode=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlanPreference] pref=0X7FFC66596D08 points to *pref=0X2CC05A0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorPlanPreferenceSetAttribute] handle=0X371A5D0 pref=0X2CC05A0 attr=103 buf=0X7FFC66596CE4 sizeInBytes=4
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorPlanPreferenceSetAttribute] CUTENSOR_PLAN_PREFERENCE_FAST_PLANNING set to 1 in pref=0X2CC05A0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlan] handle=0X371A5D0 plan=0X7FFC66596D10 desc=0XEFD4940 pref=0X2CC05A0 workspaceSizeLimit=144078552
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlan] plan=0X7FFC66596D10 points to *plan=0XF77DE20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorContract] handle=0X371A5D0 plan=0XF77DE20 alpha=0X7FFC66598FB8 A=0X7F2914400360 B=0X7F291440F5D0 beta=0X7FFC66598FB0 C=0X7F29144032B0 D=0X7F29144032B0 workspace=0X7F290A000000 workspaceSize=144078552 stream=0X2441EB0 id=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlan] plan=0XF77DE20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlanPreference] pref=0X2CC05A0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyOperationDescriptor] desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X24BE6E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X250FF70
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X25224B0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CE8 numModes=3 extent=[1,6,65] stride=[1,1,6] dataType=1 alignmentRequirement=8
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CE8 points to *desc=0X250FF70
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF0 numModes=3 extent=[2,15,6] stride=[1,2,30] dataType=1 alignmentRequirement=512
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF0 points to *desc=0X24BE6E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF8 numModes=4 extent=[1,65,2,15] stride=[1,1,65,130] dataType=1 alignmentRequirement=64
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF8 points to *desc=0X2CC05A0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateContraction] handle=0X371A5D0 desc=0X7FFC66596D00 descA=0X250FF70 modeA=[4,1,5] opA=1 descB=0X24BE6E0 modeB=[6,7,1] opB=1 descC=0X2CC05A0 modeC=[4,5,6,7] opC=1 descD=0X2CC05A0 modeD=[4,5,6,7] descCompute=0X7FFC66596D20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateContraction] desc=0X7FFC66596D00 points to *desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlanPreference] handle=0X371A5D0 pref=0X7FFC66596D08 algo=-1 jitMode=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlanPreference] pref=0X7FFC66596D08 points to *pref=0X2D37A30
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorPlanPreferenceSetAttribute] handle=0X371A5D0 pref=0X2D37A30 attr=103 buf=0X7FFC66596CE4 sizeInBytes=4
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorPlanPreferenceSetAttribute] CUTENSOR_PLAN_PREFERENCE_FAST_PLANNING set to 1 in pref=0X2D37A30
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlan] handle=0X371A5D0 plan=0X7FFC66596D10 desc=0XEFD4940 pref=0X2D37A30 workspaceSizeLimit=144078552
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlan] plan=0X7FFC66596D10 points to *plan=0XF77DF40
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorContract] handle=0X371A5D0 plan=0XF77DF40 alpha=0X7FFC66598FB8 A=0X7F2914400D38 B=0X7F2914400200 beta=0X7FFC66598FB0 C=0X7F29144040C0 D=0X7F29144040C0 workspace=0X7F290A000000 workspaceSize=144078552 stream=0X2441EB0 id=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlan] plan=0XF77DF40
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlanPreference] pref=0X2D37A30
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyOperationDescriptor] desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2CC05A0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X24BE6E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X250FF70
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CE8 numModes=3 extent=[1,6,65] stride=[1,1,6] dataType=1 alignmentRequirement=8
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CE8 points to *desc=0X24BE6E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF0 numModes=3 extent=[1,83,6] stride=[1,1,83] dataType=1 alignmentRequirement=32
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF0 points to *desc=0X2CC05A0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF8 numModes=4 extent=[1,65,1,83] stride=[1,1,65,65] dataType=1 alignmentRequirement=16
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF8 points to *desc=0X2D37A30
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateContraction] handle=0X371A5D0 desc=0X7FFC66596D00 descA=0X24BE6E0 modeA=[4,1,5] opA=1 descB=0X2CC05A0 modeB=[6,7,1] opB=1 descC=0X2D37A30 modeC=[4,5,6,7] opC=1 descD=0X2D37A30 modeD=[4,5,6,7] descCompute=0X7FFC66596D20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateContraction] desc=0X7FFC66596D00 points to *desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlanPreference] handle=0X371A5D0 pref=0X7FFC66596D08 algo=-1 jitMode=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlanPreference] pref=0X7FFC66596D08 points to *pref=0X2D29EE0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorPlanPreferenceSetAttribute] handle=0X371A5D0 pref=0X2D29EE0 attr=103 buf=0X7FFC66596CE4 sizeInBytes=4
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorPlanPreferenceSetAttribute] CUTENSOR_PLAN_PREFERENCE_FAST_PLANNING set to 1 in pref=0X2D29EE0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlan] handle=0X371A5D0 plan=0X7FFC66596D10 desc=0XEFD4940 pref=0X2D29EE0 workspaceSizeLimit=144078552
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlan] plan=0X7FFC66596D10 points to *plan=0XF77E060
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorContract] handle=0X371A5D0 plan=0XF77E060 alpha=0X7FFC66598FB8 A=0X7F2914400D38 B=0X7F29144007A0 beta=0X7FFC66598FB0 C=0X7F29144040F0 D=0X7F29144040F0 workspace=0X7F290A000000 workspaceSize=144078552 stream=0X2441EB0 id=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlan] plan=0XF77E060
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlanPreference] pref=0X2D29EE0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyOperationDescriptor] desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2D37A30
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2CC05A0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X24BE6E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CE8 numModes=3 extent=[2,47,65] stride=[1,2,94] dataType=1 alignmentRequirement=16
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CE8 points to *desc=0X2D37A30
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF0 numModes=3 extent=[1,15,47] stride=[1,1,15] dataType=1 alignmentRequirement=16
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF0 points to *desc=0X2D29EE0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF8 numModes=4 extent=[2,65,1,15] stride=[1,2,130,130] dataType=1 alignmentRequirement=8
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF8 points to *desc=0X2D23E20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateContraction] handle=0X371A5D0 desc=0X7FFC66596D00 descA=0X2D37A30 modeA=[4,1,5] opA=1 descB=0X2D29EE0 modeB=[6,7,1] opB=1 descC=0X2D23E20 modeC=[4,5,6,7] opC=1 descD=0X2D23E20 modeD=[4,5,6,7] descCompute=0X7FFC66596D20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateContraction] desc=0X7FFC66596D00 points to *desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlanPreference] handle=0X371A5D0 pref=0X7FFC66596D08 algo=-1 jitMode=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlanPreference] pref=0X7FFC66596D08 points to *pref=0X2CC3050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorPlanPreferenceSetAttribute] handle=0X371A5D0 pref=0X2CC3050 attr=103 buf=0X7FFC66596CE4 sizeInBytes=4
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorPlanPreferenceSetAttribute] CUTENSOR_PLAN_PREFERENCE_FAST_PLANNING set to 1 in pref=0X2CC3050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlan] handle=0X371A5D0 plan=0X7FFC66596D10 desc=0XEFD4940 pref=0X2CC3050 workspaceSizeLimit=144078552
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlan] plan=0X7FFC66596D10 points to *plan=0XF77E060
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorContract] handle=0X371A5D0 plan=0XF77E060 alpha=0X7FFC66598FB8 A=0X7F2914400C30 B=0X7F2914401190 beta=0X7FFC66598FB0 C=0X7F291440AC98 D=0X7F291440AC98 workspace=0X7F290A000000 workspaceSize=144078552 stream=0X2441EB0 id=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlan] plan=0XF77E060
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlanPreference] pref=0X2CC3050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyOperationDescriptor] desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2D23E20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2D29EE0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2D37A30
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CE8 numModes=3 extent=[2,47,65] stride=[1,2,94] dataType=1 alignmentRequirement=16
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CE8 points to *desc=0X2D29EE0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF0 numModes=3 extent=[2,83,47] stride=[1,2,166] dataType=1 alignmentRequirement=8
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF0 points to *desc=0X2D23E20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF8 numModes=4 extent=[2,65,2,83] stride=[1,2,130,260] dataType=1 alignmentRequirement=16
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF8 points to *desc=0X2CC3050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateContraction] handle=0X371A5D0 desc=0X7FFC66596D00 descA=0X2D29EE0 modeA=[4,1,5] opA=1 descB=0X2D23E20 modeB=[6,7,1] opB=1 descC=0X2CC3050 modeC=[4,5,6,7] opC=1 descD=0X2CC3050 modeD=[4,5,6,7] descCompute=0X7FFC66596D20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateContraction] desc=0X7FFC66596D00 points to *desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlanPreference] handle=0X371A5D0 pref=0X7FFC66596D08 algo=-1 jitMode=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlanPreference] pref=0X7FFC66596D08 points to *pref=0X2D42010
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorPlanPreferenceSetAttribute] handle=0X371A5D0 pref=0X2D42010 attr=103 buf=0X7FFC66596CE4 sizeInBytes=4
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorPlanPreferenceSetAttribute] CUTENSOR_PLAN_PREFERENCE_FAST_PLANNING set to 1 in pref=0X2D42010
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlan] handle=0X371A5D0 plan=0X7FFC66596D10 desc=0XEFD4940 pref=0X2D42010 workspaceSizeLimit=144078552
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlan] plan=0X7FFC66596D10 points to *plan=0XF77E060
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorContract] handle=0X371A5D0 plan=0XF77E060 alpha=0X7FFC66598FB8 A=0X7F2914400C30 B=0X7F2914401808 beta=0X7FFC66598FB0 C=0X7F29144040F0 D=0X7F29144040F0 workspace=0X7F290A000000 workspaceSize=144078552 stream=0X2441EB0 id=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlan] plan=0XF77E060
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlanPreference] pref=0X2D42010
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyOperationDescriptor] desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2CC3050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2D23E20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2D29EE0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CE8 numModes=3 extent=[2,47,65] stride=[1,2,94] dataType=1 alignmentRequirement=16
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CE8 points to *desc=0X2D23E20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF0 numModes=3 extent=[1,216,47] stride=[1,1,216] dataType=1 alignmentRequirement=16
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF0 points to *desc=0X2CC3050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF8 numModes=4 extent=[2,65,1,216] stride=[1,2,130,130] dataType=1 alignmentRequirement=32
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF8 points to *desc=0X2D42010
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateContraction] handle=0X371A5D0 desc=0X7FFC66596D00 descA=0X2D23E20 modeA=[4,1,5] opA=1 descB=0X2CC3050 modeB=[6,7,1] opB=1 descC=0X2D42010 modeC=[4,5,6,7] opC=1 descD=0X2D42010 modeD=[4,5,6,7] descCompute=0X7FFC66596D20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateContraction] desc=0X7FFC66596D00 points to *desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlanPreference] handle=0X371A5D0 pref=0X7FFC66596D08 algo=-1 jitMode=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlanPreference] pref=0X7FFC66596D08 points to *pref=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorPlanPreferenceSetAttribute] handle=0X371A5D0 pref=0X2CAA050 attr=103 buf=0X7FFC66596CE4 sizeInBytes=4
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorPlanPreferenceSetAttribute] CUTENSOR_PLAN_PREFERENCE_FAST_PLANNING set to 1 in pref=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlan] handle=0X371A5D0 plan=0X7FFC66596D10 desc=0XEFD4940 pref=0X2CAA050 workspaceSizeLimit=144078552
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlan] plan=0X7FFC66596D10 points to *plan=0XF77E060
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorContract] handle=0X371A5D0 plan=0XF77E060 alpha=0X7FFC66598FB8 A=0X7F2914400C30 B=0X7F291440F5D0 beta=0X7FFC66598FB0 C=0X7F291442A660 D=0X7F291442A660 workspace=0X7F290A000000 workspaceSize=144078552 stream=0X2441EB0 id=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlan] plan=0XF77E060
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlanPreference] pref=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyOperationDescriptor] desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2D42010
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2CC3050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2D23E20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CE8 numModes=3 extent=[1,181,65] stride=[1,1,181] dataType=1 alignmentRequirement=16
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CE8 points to *desc=0X2CC3050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF0 numModes=3 extent=[1,83,181] stride=[1,1,83] dataType=1 alignmentRequirement=64
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF0 points to *desc=0X2D42010
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF8 numModes=4 extent=[1,65,1,83] stride=[1,1,65,65] dataType=1 alignmentRequirement=128
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF8 points to *desc=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateContraction] handle=0X371A5D0 desc=0X7FFC66596D00 descA=0X2CC3050 modeA=[4,1,5] opA=1 descB=0X2D42010 modeB=[6,7,1] opB=1 descC=0X2CAA050 modeC=[4,5,6,7] opC=1 descD=0X2CAA050 modeD=[4,5,6,7] descCompute=0X7FFC66596D20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateContraction] desc=0X7FFC66596D00 points to *desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlanPreference] handle=0X371A5D0 pref=0X7FFC66596D08 algo=-1 jitMode=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlanPreference] pref=0X7FFC66596D08 points to *pref=0X25C90C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorPlanPreferenceSetAttribute] handle=0X371A5D0 pref=0X25C90C0 attr=103 buf=0X7FFC66596CE4 sizeInBytes=4
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorPlanPreferenceSetAttribute] CUTENSOR_PLAN_PREFERENCE_FAST_PLANNING set to 1 in pref=0X25C90C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlan] handle=0X371A5D0 plan=0X7FFC66596D10 desc=0XEFD4940 pref=0X25C90C0 workspaceSizeLimit=144078552
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlan] plan=0X7FFC66596D10 points to *plan=0XF77E180
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorContract] handle=0X371A5D0 plan=0XF77E180 alpha=0X7FFC66598FB8 A=0X7F291440BEF0 B=0X7F2914413F40 beta=0X7FFC66598FB0 C=0X7F2914437180 D=0X7F2914437180 workspace=0X7F290A000000 workspaceSize=144078552 stream=0X2441EB0 id=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlan] plan=0XF77E180
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlanPreference] pref=0X25C90C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyOperationDescriptor] desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2D42010
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2CC3050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CE8 numModes=3 extent=[1,181,65] stride=[1,1,181] dataType=1 alignmentRequirement=16
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CE8 points to *desc=0X2D42010
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF0 numModes=3 extent=[2,216,181] stride=[1,2,432] dataType=1 alignmentRequirement=8
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF0 points to *desc=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF8 numModes=4 extent=[1,65,2,216] stride=[1,1,65,130] dataType=1 alignmentRequirement=8
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF8 points to *desc=0X25C90C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateContraction] handle=0X371A5D0 desc=0X7FFC66596D00 descA=0X2D42010 modeA=[4,1,5] opA=1 descB=0X2CAA050 modeB=[6,7,1] opB=1 descC=0X25C90C0 modeC=[4,5,6,7] opC=1 descD=0X25C90C0 modeD=[4,5,6,7] descCompute=0X7FFC66596D20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateContraction] desc=0X7FFC66596D00 points to *desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlanPreference] handle=0X371A5D0 pref=0X7FFC66596D08 algo=-1 jitMode=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlanPreference] pref=0X7FFC66596D08 points to *pref=0X251C4E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorPlanPreferenceSetAttribute] handle=0X371A5D0 pref=0X251C4E0 attr=103 buf=0X7FFC66596CE4 sizeInBytes=4
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorPlanPreferenceSetAttribute] CUTENSOR_PLAN_PREFERENCE_FAST_PLANNING set to 1 in pref=0X251C4E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlan] handle=0X371A5D0 plan=0X7FFC66596D10 desc=0XEFD4940 pref=0X251C4E0 workspaceSizeLimit=144078552
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlan] plan=0X7FFC66596D10 points to *plan=0XF85C160
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorContract] handle=0X371A5D0 plan=0XF85C160 alpha=0X7FFC66598FB8 A=0X7F291440BEF0 B=0X7F291441D778 beta=0X7FFC66598FB0 C=0X7F291440AC98 D=0X7F291440AC98 workspace=0X7F290A000000 workspaceSize=144078552 stream=0X2441EB0 id=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlan] plan=0XF85C160
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlanPreference] pref=0X251C4E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyOperationDescriptor] desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X25C90C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2D42010
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CE8 numModes=3 extent=[1,181,65] stride=[1,1,181] dataType=1 alignmentRequirement=16
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CE8 points to *desc=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF0 numModes=3 extent=[1,373,181] stride=[1,1,373] dataType=1 alignmentRequirement=128
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF0 points to *desc=0X25C90C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF8 numModes=4 extent=[1,65,1,373] stride=[1,1,65,65] dataType=1 alignmentRequirement=128
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF8 points to *desc=0X251C4E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateContraction] handle=0X371A5D0 desc=0X7FFC66596D00 descA=0X2CAA050 modeA=[4,1,5] opA=1 descB=0X25C90C0 modeB=[6,7,1] opB=1 descC=0X251C4E0 modeC=[4,5,6,7] opC=1 descD=0X251C4E0 modeD=[4,5,6,7] descCompute=0X7FFC66596D20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateContraction] desc=0X7FFC66596D00 points to *desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlanPreference] handle=0X371A5D0 pref=0X7FFC66596D08 algo=-1 jitMode=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlanPreference] pref=0X7FFC66596D08 points to *pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorPlanPreferenceSetAttribute] handle=0X371A5D0 pref=0XF85C1C0 attr=103 buf=0X7FFC66596CE4 sizeInBytes=4
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorPlanPreferenceSetAttribute] CUTENSOR_PLAN_PREFERENCE_FAST_PLANNING set to 1 in pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlan] handle=0X371A5D0 plan=0X7FFC66596D10 desc=0XEFD4940 pref=0XF85C1C0 workspaceSizeLimit=144078552
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlan] plan=0X7FFC66596D10 points to *plan=0XF8D60C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorContract] handle=0X371A5D0 plan=0XF8D60C0 alpha=0X7FFC66598FB8 A=0X7F291440BEF0 B=0X7F2914498D80 beta=0X7FFC66598FB0 C=0X7F2914437180 D=0X7F2914437180 workspace=0X7F290A000000 workspaceSize=144078552 stream=0X2441EB0 id=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlan] plan=0XF8D60C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlanPreference] pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyOperationDescriptor] desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X251C4E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X25C90C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CE8 numModes=3 extent=[1,47,200] stride=[1,1,47] dataType=1 alignmentRequirement=8
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CE8 points to *desc=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF0 numModes=3 extent=[1,15,47] stride=[1,1,15] dataType=1 alignmentRequirement=16
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF0 points to *desc=0X25C90C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF8 numModes=4 extent=[1,200,1,15] stride=[1,1,200,200] dataType=1 alignmentRequirement=8
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF8 points to *desc=0X251C4E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateContraction] handle=0X371A5D0 desc=0X7FFC66596D00 descA=0X2CAA050 modeA=[4,1,5] opA=1 descB=0X25C90C0 modeB=[6,7,1] opB=1 descC=0X251C4E0 modeC=[4,5,6,7] opC=1 descD=0X251C4E0 modeD=[4,5,6,7] descCompute=0X7FFC66596D20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateContraction] desc=0X7FFC66596D00 points to *desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlanPreference] handle=0X371A5D0 pref=0X7FFC66596D08 algo=-1 jitMode=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlanPreference] pref=0X7FFC66596D08 points to *pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorPlanPreferenceSetAttribute] handle=0X371A5D0 pref=0XF85C1C0 attr=103 buf=0X7FFC66596CE4 sizeInBytes=4
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorPlanPreferenceSetAttribute] CUTENSOR_PLAN_PREFERENCE_FAST_PLANNING set to 1 in pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlan] handle=0X371A5D0 plan=0X7FFC66596D10 desc=0XEFD4940 pref=0XF85C1C0 workspaceSizeLimit=144078552
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlan] plan=0X7FFC66596D10 points to *plan=0XF8D60C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorContract] handle=0X371A5D0 plan=0XF8D60C0 alpha=0X7FFC66598FB8 A=0X7F2914416FA8 B=0X7F2914401190 beta=0X7FFC66598FB0 C=0X7F291442F9A8 D=0X7F291442F9A8 workspace=0X7F290A000000 workspaceSize=144078552 stream=0X2441EB0 id=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlan] plan=0XF8D60C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlanPreference] pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyOperationDescriptor] desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X251C4E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X25C90C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CE8 numModes=3 extent=[1,47,200] stride=[1,1,47] dataType=1 alignmentRequirement=8
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CE8 points to *desc=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF0 numModes=3 extent=[2,83,47] stride=[1,2,166] dataType=1 alignmentRequirement=8
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF0 points to *desc=0X25C90C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF8 numModes=4 extent=[1,200,2,83] stride=[1,1,200,400] dataType=1 alignmentRequirement=64
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF8 points to *desc=0X251C4E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateContraction] handle=0X371A5D0 desc=0X7FFC66596D00 descA=0X2CAA050 modeA=[4,1,5] opA=1 descB=0X25C90C0 modeB=[6,7,1] opB=1 descC=0X251C4E0 modeC=[4,5,6,7] opC=1 descD=0X251C4E0 modeD=[4,5,6,7] descCompute=0X7FFC66596D20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateContraction] desc=0X7FFC66596D00 points to *desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlanPreference] handle=0X371A5D0 pref=0X7FFC66596D08 algo=-1 jitMode=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlanPreference] pref=0X7FFC66596D08 points to *pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorPlanPreferenceSetAttribute] handle=0X371A5D0 pref=0XF85C1C0 attr=103 buf=0X7FFC66596CE4 sizeInBytes=4
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorPlanPreferenceSetAttribute] CUTENSOR_PLAN_PREFERENCE_FAST_PLANNING set to 1 in pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlan] handle=0X371A5D0 plan=0X7FFC66596D10 desc=0XEFD4940 pref=0XF85C1C0 workspaceSizeLimit=144078552
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlan] plan=0X7FFC66596D10 points to *plan=0XF8D60C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorContract] handle=0X371A5D0 plan=0XF8D60C0 alpha=0X7FFC66598FB8 A=0X7F2914416FA8 B=0X7F2914401808 beta=0X7FFC66598FB0 C=0X7F29144061C0 D=0X7F29144061C0 workspace=0X7F290A000000 workspaceSize=144078552 stream=0X2441EB0 id=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlan] plan=0XF8D60C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlanPreference] pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyOperationDescriptor] desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X251C4E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X25C90C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CE8 numModes=3 extent=[1,47,200] stride=[1,1,47] dataType=1 alignmentRequirement=8
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CE8 points to *desc=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF0 numModes=3 extent=[1,216,47] stride=[1,1,216] dataType=1 alignmentRequirement=16
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF0 points to *desc=0X25C90C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF8 numModes=4 extent=[1,200,1,216] stride=[1,1,200,200] dataType=1 alignmentRequirement=128
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF8 points to *desc=0X251C4E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateContraction] handle=0X371A5D0 desc=0X7FFC66596D00 descA=0X2CAA050 modeA=[4,1,5] opA=1 descB=0X25C90C0 modeB=[6,7,1] opB=1 descC=0X251C4E0 modeC=[4,5,6,7] opC=1 descD=0X251C4E0 modeD=[4,5,6,7] descCompute=0X7FFC66596D20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateContraction] desc=0X7FFC66596D00 points to *desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlanPreference] handle=0X371A5D0 pref=0X7FFC66596D08 algo=-1 jitMode=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlanPreference] pref=0X7FFC66596D08 points to *pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorPlanPreferenceSetAttribute] handle=0X371A5D0 pref=0XF85C1C0 attr=103 buf=0X7FFC66596CE4 sizeInBytes=4
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorPlanPreferenceSetAttribute] CUTENSOR_PLAN_PREFERENCE_FAST_PLANNING set to 1 in pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlan] handle=0X371A5D0 plan=0X7FFC66596D10 desc=0XEFD4940 pref=0XF85C1C0 workspaceSizeLimit=144078552
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlan] plan=0X7FFC66596D10 points to *plan=0XF8D60C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorContract] handle=0X371A5D0 plan=0XF8D60C0 alpha=0X7FFC66598FB8 A=0X7F2914416FA8 B=0X7F291440F5D0 beta=0X7FFC66598FB0 C=0X7F2914441180 D=0X7F2914441180 workspace=0X7F290A000000 workspaceSize=144078552 stream=0X2441EB0 id=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlan] plan=0XF8D60C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlanPreference] pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyOperationDescriptor] desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X251C4E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X25C90C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CE8 numModes=3 extent=[2,181,200] stride=[1,2,362] dataType=1 alignmentRequirement=64
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CE8 points to *desc=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF0 numModes=3 extent=[1,83,181] stride=[1,1,83] dataType=1 alignmentRequirement=64
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF0 points to *desc=0X25C90C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF8 numModes=4 extent=[2,200,1,83] stride=[1,2,400,400] dataType=1 alignmentRequirement=512
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF8 points to *desc=0X251C4E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateContraction] handle=0X371A5D0 desc=0X7FFC66596D00 descA=0X2CAA050 modeA=[4,1,5] opA=1 descB=0X25C90C0 modeB=[6,7,1] opB=1 descC=0X251C4E0 modeC=[4,5,6,7] opC=1 descD=0X251C4E0 modeD=[4,5,6,7] descCompute=0X7FFC66596D20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateContraction] desc=0X7FFC66596D00 points to *desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlanPreference] handle=0X371A5D0 pref=0X7FFC66596D08 algo=-1 jitMode=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlanPreference] pref=0X7FFC66596D08 points to *pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorPlanPreferenceSetAttribute] handle=0X371A5D0 pref=0XF85C1C0 attr=103 buf=0X7FFC66596CE4 sizeInBytes=4
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorPlanPreferenceSetAttribute] CUTENSOR_PLAN_PREFERENCE_FAST_PLANNING set to 1 in pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlan] handle=0X371A5D0 plan=0X7FFC66596D10 desc=0XEFD4940 pref=0XF85C1C0 workspaceSizeLimit=144078552
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlan] plan=0X7FFC66596D10 points to *plan=0XF8D60C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorContract] handle=0X371A5D0 plan=0XF8D60C0 alpha=0X7FFC66598FB8 A=0X7F29144125C0 B=0X7F2914413F40 beta=0X7FFC66598FB0 C=0X7F2914454A00 D=0X7F2914454A00 workspace=0X7F290A000000 workspaceSize=144078552 stream=0X2441EB0 id=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlan] plan=0XF8D60C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlanPreference] pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyOperationDescriptor] desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X251C4E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X25C90C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CE8 numModes=3 extent=[2,181,200] stride=[1,2,362] dataType=1 alignmentRequirement=64
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CE8 points to *desc=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF0 numModes=3 extent=[2,216,181] stride=[1,2,432] dataType=1 alignmentRequirement=8
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF0 points to *desc=0X25C90C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF8 numModes=4 extent=[2,200,2,216] stride=[1,2,400,800] dataType=1 alignmentRequirement=128
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF8 points to *desc=0X251C4E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateContraction] handle=0X371A5D0 desc=0X7FFC66596D00 descA=0X2CAA050 modeA=[4,1,5] opA=1 descB=0X25C90C0 modeB=[6,7,1] opB=1 descC=0X251C4E0 modeC=[4,5,6,7] opC=1 descD=0X251C4E0 modeD=[4,5,6,7] descCompute=0X7FFC66596D20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateContraction] desc=0X7FFC66596D00 points to *desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlanPreference] handle=0X371A5D0 pref=0X7FFC66596D08 algo=-1 jitMode=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlanPreference] pref=0X7FFC66596D08 points to *pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorPlanPreferenceSetAttribute] handle=0X371A5D0 pref=0XF85C1C0 attr=103 buf=0X7FFC66596CE4 sizeInBytes=4
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorPlanPreferenceSetAttribute] CUTENSOR_PLAN_PREFERENCE_FAST_PLANNING set to 1 in pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlan] handle=0X371A5D0 plan=0X7FFC66596D10 desc=0XEFD4940 pref=0XF85C1C0 workspaceSizeLimit=144078552
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlan] plan=0X7FFC66596D10 points to *plan=0XF8D60C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorContract] handle=0X371A5D0 plan=0XF8D60C0 alpha=0X7FFC66598FB8 A=0X7F29144125C0 B=0X7F291441D778 beta=0X7FFC66598FB0 C=0X7F2914441180 D=0X7F2914441180 workspace=0X7F290A000000 workspaceSize=144078552 stream=0X2441EB0 id=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlan] plan=0XF8D60C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlanPreference] pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyOperationDescriptor] desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X251C4E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X25C90C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CE8 numModes=3 extent=[2,181,200] stride=[1,2,362] dataType=1 alignmentRequirement=64
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CE8 points to *desc=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF0 numModes=3 extent=[1,373,181] stride=[1,1,373] dataType=1 alignmentRequirement=128
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF0 points to *desc=0X25C90C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF8 numModes=4 extent=[2,200,1,373] stride=[1,2,400,400] dataType=1 alignmentRequirement=1024
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF8 points to *desc=0X251C4E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateContraction] handle=0X371A5D0 desc=0X7FFC66596D00 descA=0X2CAA050 modeA=[4,1,5] opA=1 descB=0X25C90C0 modeB=[6,7,1] opB=1 descC=0X251C4E0 modeC=[4,5,6,7] opC=1 descD=0X251C4E0 modeD=[4,5,6,7] descCompute=0X7FFC66596D20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateContraction] desc=0X7FFC66596D00 points to *desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlanPreference] handle=0X371A5D0 pref=0X7FFC66596D08 algo=-1 jitMode=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlanPreference] pref=0X7FFC66596D08 points to *pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorPlanPreferenceSetAttribute] handle=0X371A5D0 pref=0XF85C1C0 attr=103 buf=0X7FFC66596CE4 sizeInBytes=4
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorPlanPreferenceSetAttribute] CUTENSOR_PLAN_PREFERENCE_FAST_PLANNING set to 1 in pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlan] handle=0X371A5D0 plan=0X7FFC66596D10 desc=0XEFD4940 pref=0XF85C1C0 workspaceSizeLimit=144078552
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlan] plan=0X7FFC66596D10 points to *plan=0XF8D60C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorContract] handle=0X371A5D0 plan=0XF8D60C0 alpha=0X7FFC66598FB8 A=0X7F29144125C0 B=0X7F2914498D80 beta=0X7FFC66598FB0 C=0X7F2914551C00 D=0X7F2914551C00 workspace=0X7F290A000000 workspaceSize=144078552 stream=0X2441EB0 id=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlan] plan=0XF8D60C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlanPreference] pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyOperationDescriptor] desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X251C4E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X25C90C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CE8 numModes=3 extent=[1,350,200] stride=[1,1,350] dataType=1 alignmentRequirement=128
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CE8 points to *desc=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF0 numModes=3 extent=[1,216,350] stride=[1,1,216] dataType=1 alignmentRequirement=8
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF0 points to *desc=0X25C90C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF8 numModes=4 extent=[1,200,1,216] stride=[1,1,200,200] dataType=1 alignmentRequirement=128
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF8 points to *desc=0X251C4E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateContraction] handle=0X371A5D0 desc=0X7FFC66596D00 descA=0X2CAA050 modeA=[4,1,5] opA=1 descB=0X25C90C0 modeB=[6,7,1] opB=1 descC=0X251C4E0 modeC=[4,5,6,7] opC=1 descD=0X251C4E0 modeD=[4,5,6,7] descCompute=0X7FFC66596D20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateContraction] desc=0X7FFC66596D00 points to *desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlanPreference] handle=0X371A5D0 pref=0X7FFC66596D08 algo=-1 jitMode=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlanPreference] pref=0X7FFC66596D08 points to *pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorPlanPreferenceSetAttribute] handle=0X371A5D0 pref=0XF85C1C0 attr=103 buf=0X7FFC66596CE4 sizeInBytes=4
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorPlanPreferenceSetAttribute] CUTENSOR_PLAN_PREFERENCE_FAST_PLANNING set to 1 in pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlan] handle=0X371A5D0 plan=0X7FFC66596D10 desc=0XEFD4940 pref=0XF85C1C0 workspaceSizeLimit=144078552
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlan] plan=0X7FFC66596D10 points to *plan=0XF8D60C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorContract] handle=0X371A5D0 plan=0XF8D60C0 alpha=0X7FFC66598FB8 A=0X7F291448D680 B=0X7F2914483FC8 beta=0X7FFC66598FB0 C=0X7F2914523A80 D=0X7F2914523A80 workspace=0X7F290A000000 workspaceSize=144078552 stream=0X2441EB0 id=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlan] plan=0XF8D60C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlanPreference] pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyOperationDescriptor] desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X251C4E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X25C90C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CE8 numModes=3 extent=[1,350,200] stride=[1,1,350] dataType=1 alignmentRequirement=128
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CE8 points to *desc=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF0 numModes=3 extent=[2,373,350] stride=[1,2,746] dataType=1 alignmentRequirement=128
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF0 points to *desc=0X25C90C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF8 numModes=4 extent=[1,200,2,373] stride=[1,1,200,400] dataType=1 alignmentRequirement=512
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF8 points to *desc=0X251C4E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateContraction] handle=0X371A5D0 desc=0X7FFC66596D00 descA=0X2CAA050 modeA=[4,1,5] opA=1 descB=0X25C90C0 modeB=[6,7,1] opB=1 descC=0X251C4E0 modeC=[4,5,6,7] opC=1 descD=0X251C4E0 modeD=[4,5,6,7] descCompute=0X7FFC66596D20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateContraction] desc=0X7FFC66596D00 points to *desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlanPreference] handle=0X371A5D0 pref=0X7FFC66596D08 algo=-1 jitMode=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlanPreference] pref=0X7FFC66596D08 points to *pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorPlanPreferenceSetAttribute] handle=0X371A5D0 pref=0XF85C1C0 attr=103 buf=0X7FFC66596CE4 sizeInBytes=4
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorPlanPreferenceSetAttribute] CUTENSOR_PLAN_PREFERENCE_FAST_PLANNING set to 1 in pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlan] handle=0X371A5D0 plan=0X7FFC66596D10 desc=0XEFD4940 pref=0XF85C1C0 workspaceSizeLimit=144078552
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlan] plan=0X7FFC66596D10 points to *plan=0XF8D60C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorContract] handle=0X371A5D0 plan=0XF8D60C0 alpha=0X7FFC66598FB8 A=0X7F291448D680 B=0X7F2914493C80 beta=0X7FFC66598FB0 C=0X7F2914454A00 D=0X7F2914454A00 workspace=0X7F290A000000 workspaceSize=144078552 stream=0X2441EB0 id=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlan] plan=0XF8D60C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlanPreference] pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyOperationDescriptor] desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X251C4E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X25C90C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CE8 numModes=3 extent=[1,350,200] stride=[1,1,350] dataType=1 alignmentRequirement=128
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CE8 points to *desc=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF0 numModes=3 extent=[1,424,350] stride=[1,1,424] dataType=1 alignmentRequirement=32
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF0 points to *desc=0X25C90C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateTensorDescriptor] handle=0X371A5D0 desc=0X7FFC66596CF8 numModes=4 extent=[1,200,1,424] stride=[1,1,200,200] dataType=1 alignmentRequirement=128
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateTensorDescriptor] desc=0X7FFC66596CF8 points to *desc=0X251C4E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreateContraction] handle=0X371A5D0 desc=0X7FFC66596D00 descA=0X2CAA050 modeA=[4,1,5] opA=1 descB=0X25C90C0 modeB=[6,7,1] opB=1 descC=0X251C4E0 modeC=[4,5,6,7] opC=1 descD=0X251C4E0 modeD=[4,5,6,7] descCompute=0X7FFC66596D20
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreateContraction] desc=0X7FFC66596D00 points to *desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlanPreference] handle=0X371A5D0 pref=0X7FFC66596D08 algo=-1 jitMode=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlanPreference] pref=0X7FFC66596D08 points to *pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorPlanPreferenceSetAttribute] handle=0X371A5D0 pref=0XF85C1C0 attr=103 buf=0X7FFC66596CE4 sizeInBytes=4
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorPlanPreferenceSetAttribute] CUTENSOR_PLAN_PREFERENCE_FAST_PLANNING set to 1 in pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorCreatePlan] handle=0X371A5D0 plan=0X7FFC66596D10 desc=0XEFD4940 pref=0XF85C1C0 workspaceSizeLimit=144078552
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorCreatePlan] plan=0X7FFC66596D10 points to *plan=0XFAF8FD0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorContract] handle=0X371A5D0 plan=0XFAF8FD0 alpha=0X7FFC66598FB8 A=0X7F291448D680 B=0X7F29145FE160 beta=0X7FFC66598FB0 C=0X7F2914523A80 D=0X7F2914523A80 workspace=0X7F290A000000 workspaceSize=144078552 stream=0X2441EB0 id=0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorContract] cuBLAS reported the following error: 13
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorGetErrorString] error=17
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlan] plan=0XFAF8FD0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyPlanPreference] pref=0XF85C1C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyOperationDescriptor] desc=0XEFD4940
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X251C4E0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X25C90C0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyTensorDescriptor] desc=0X2CAA050
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorGetErrorString] error=14
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyBlockSparseTensorDescriptor] desc=0X13797F0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyBlockSparseTensorDescriptor] desc=0X1CFF930
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroyBlockSparseTensorDescriptor] desc=0X1D03190
+[2024-10-16 12:49:05][cuTENSOR][2040502][Api][cutensorDestroy] handle=0X371A5D0
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorDestroy] CUDA reported the following error: an illegal memory access was encountered
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorDestroy] CUDA reported the following error: an illegal memory access was encountered
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorDestroy] CUDA reported the following error: an illegal memory access was encountered
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorDestroy] CUDA reported the following error: an illegal memory access was encountered
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorDestroy] CUDA reported the following error: an illegal memory access was encountered
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorDestroy] CUDA reported the following error: an illegal memory access was encountered
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorDestroy] CUDA reported the following error: an illegal memory access was encountered
+[2024-10-16 12:49:05][cuTENSOR][2040502][Info][cutensorDestroy] CUDA reported the following error: an illegal memory access was encountered
