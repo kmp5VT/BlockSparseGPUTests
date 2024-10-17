@@ -20,6 +20,8 @@ end
 d = jldopen("$(@__DIR__)/saved_tensors_jld2/2d_momentum_hubbard/medium/symm_nfparity/S2.jld")
 T1 = d["T1"]
 T2 = d["T2"]
+block_extents(inds(T1))
+minimum.(ITensors.compute_contraction_labels( inds(T1), inds(T2)))
 commoninds(T1, T2)
 ## Find the inner indices
 innerinds = commoninds(T1, T2)
