@@ -1,12 +1,12 @@
-using ITensorMPS: AbstractObserver
-using ITensors: ITensors,linkind
+using ITensorMPS: ITensorMPS, AbstractObserver, linkind
+using ITensors: ITensors
 
 mutable struct BondDimObserver <: AbstractObserver
   ind::Int64
   maxdims::Vector{Int64}
 end
 
-function ITensors.measure!(o::BondDimObserver; bond, psi, kwargs...)
+function ITensorMPS.measure!(o::BondDimObserver; bond, psi, kwargs...)
   o.ind += 1
   if bond == length(psi) ÷ 2 && o.ind % 2 == 0
     i = linkind(psi, bond)
